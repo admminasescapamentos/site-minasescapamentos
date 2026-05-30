@@ -1,1 +1,9 @@
 ﻿.DS_Store
+00-estrategia/
+01-design/*
+!01-design/sites/
+01-design/sites/2026-04-30-v1/
+01-design/sites/2026-05-28-v2/
+01-design/sites/2026-05-30-v3/
+02-conteudo/
+03-performance/

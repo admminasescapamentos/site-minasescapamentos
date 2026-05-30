@@ -1,0 +1,689 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alinhamento e Balanceamento — Minas Escapamentos | Brasília</title>
+  <meta name="description" content="Alinhamento e balanceamento computadorizado em Brasília. Pneus preservados, carro reto e mais conforto. Minas Escapamentos, Asa Norte.">
+  <link rel="canonical" href="https://www.minasescapamentos.com.br/alinhamento-e-balanceamento">
+  <link rel="icon" type="image/png" href="imagens/favicon-minasescapamentos.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,700;0,800;0,900;1,800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero::after {
+      content: 'ALINHA';
+      position: absolute;
+      font-family: var(--font-display); font-weight: 900; font-size: 200px;
+      color: rgba(255,255,255,0.03);
+      right: -20px; bottom: -30px; line-height: 1;
+      pointer-events: none; user-select: none; letter-spacing: -4px;
+    }
+    .hero-trust-badges { display: flex; gap: 20px; flex-wrap: wrap; }
+    .hero-trust-badge { display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 10px 16px; font-size: 13px; color: rgba(255,255,255,0.75); font-weight: 500; }
+    .hero-trust-badge svg { color: var(--vermelho); flex-shrink: 0; }
+    .includes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+    .includes-card { border: 1.5px solid var(--cinza); border-radius: 14px; padding: 28px; background: var(--branco); transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s; }
+    .includes-card:hover { border-color: var(--bordo); box-shadow: 0 8px 28px rgba(123,24,24,0.08); transform: translateY(-3px); }
+    .includes-icon { width: 44px; height: 44px; background: var(--creme); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--bordo); margin-bottom: 16px; }
+    .includes-title { font-family: var(--font-display); font-weight: 800; font-size: 18px; color: var(--preto); letter-spacing: -0.3px; margin-bottom: 8px; }
+    .includes-desc { font-size: 13px; color: #666; line-height: 1.65; }
+    .section-creme { background: var(--creme); }
+    .symptoms-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+    .symptom-card { background: var(--branco); border-radius: 12px; padding: 24px; display: flex; align-items: flex-start; gap: 16px; border: 1px solid rgba(0,0,0,0.06); transition: box-shadow 0.2s; }
+    .symptom-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+    .symptom-icon { width: 40px; height: 40px; flex-shrink: 0; background: var(--bordo); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; }
+    .symptom-title { font-family: var(--font-display); font-weight: 800; font-size: 16px; color: var(--preto); margin-bottom: 4px; letter-spacing: -0.2px; }
+    .symptom-desc { font-size: 13px; color: #666; line-height: 1.6; }
+    .section-dark { background: var(--preto); padding: 80px 48px; position: relative; overflow: hidden; }
+    .section-dark::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--bordo), var(--vermelho)); }
+    .section-dark .section-tag { color: var(--vermelho); }
+    .section-dark .section-title { color: var(--branco); }
+    .section-dark .section-desc { color: rgba(255,255,255,0.5); }
+    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 56px; position: relative; }
+    .process-steps::before { content: ''; position: absolute; top: 28px; left: 60px; right: 60px; height: 1px; background: rgba(255,255,255,0.1); }
+    .process-step { text-align: center; padding: 0 20px; position: relative; }
+    .process-step-num { width: 56px; height: 56px; background: var(--bordo); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 800; font-size: 20px; color: var(--branco); margin: 0 auto 20px; position: relative; z-index: 1; }
+    .process-step-title { font-family: var(--font-display); font-weight: 800; font-size: 17px; color: var(--branco); margin-bottom: 10px; letter-spacing: -0.3px; }
+    .process-step-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.65; }
+    .service-nav { background: var(--creme); border-top: 1px solid var(--cinza); border-bottom: 1px solid var(--cinza); padding: 20px 48px; }
+    .service-nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: center; }
+    .service-nav-link { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--bordo); text-decoration: none; text-transform: uppercase; letter-spacing: 0.8px; transition: opacity 0.2s; }
+    .service-nav-link:hover { opacity: 0.7; }
+    .tipo-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--creme); color: var(--bordo); border: 1.5px solid var(--cinza); padding: 6px 14px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+    .tipo-section { padding: 80px 48px; }
+    .tipo-section-inner { max-width: 1200px; margin: 0 auto; }
+    .tipo-header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-bottom: 56px; }
+    .tipo-header-right { padding-top: 8px; }
+    .tipo-feature-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
+    .tipo-feature-item { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: #555; line-height: 1.6; }
+    .tipo-feature-check { width: 22px; height: 22px; flex-shrink: 0; background: var(--creme); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--bordo); margin-top: 1px; }
+    .section-divider { border: none; border-top: 1px solid var(--cinza); margin: 0; }
+    @media (max-width: 1024px) {
+      .includes-grid { grid-template-columns: repeat(2, 1fr); }
+      .symptoms-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-steps { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+      .process-steps::before { display: none; }
+      .tipo-header { grid-template-columns: 1fr; gap: 40px; }
+      .cta-inner { grid-template-columns: 1fr; }
+      .cta-wa-card { display: none; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .page-hero { padding: 60px 24px; }
+      .page-hero-title { font-size: 42px; }
+      .section { padding: 60px 24px; }
+      .section-dark { padding: 60px 24px; }
+      .tipo-section { padding: 60px 24px; }
+      .includes-grid { grid-template-columns: 1fr; }
+      .symptoms-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      .section-cta { padding: 60px 24px; }
+      .cta-title { font-size: 38px; }
+      .service-nav { padding: 16px 24px; }
+      footer { padding: 48px 24px 0; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .hero-trust-badges { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-logo">
+    <a href="index.html"><img src="imagens/logo-minasescapamentos-navbar.png" alt="Minas Escapamentos"></a>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li class="nav-item-dropdown">
+      <a href="servicos.html" class="nav-dropdown-trigger active">
+        Serviços
+        <svg class="nav-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-grid">
+          <a href="mecanica-geral.html" class="nav-dropdown-item"><span class="nav-dropdown-num">01</span>Mecânica Geral</a>
+          <a href="motor.html" class="nav-dropdown-item"><span class="nav-dropdown-num">02</span>Motor</a>
+          <a href="cambios.html" class="nav-dropdown-item"><span class="nav-dropdown-num">03</span>Câmbios</a>
+          <a href="eletrica-e-eletronica.html" class="nav-dropdown-item"><span class="nav-dropdown-num">04</span>Elétrica e Eletrônica</a>
+          <a href="injecao-eletronica.html" class="nav-dropdown-item"><span class="nav-dropdown-num">05</span>Injeção Eletrônica</a>
+          <a href="suspensao.html" class="nav-dropdown-item"><span class="nav-dropdown-num">06</span>Suspensão</a>
+          <a href="direcao.html" class="nav-dropdown-item"><span class="nav-dropdown-num">07</span>Direção</a>
+          <a href="freios.html" class="nav-dropdown-item"><span class="nav-dropdown-num">08</span>Freios</a>
+          <a href="climatizacao.html" class="nav-dropdown-item"><span class="nav-dropdown-num">09</span>Climatização</a>
+          <a href="funilaria-e-pintura.html" class="nav-dropdown-item"><span class="nav-dropdown-num">10</span>Funilaria e Pintura</a>
+          <a href="oleos-e-fluidos.html" class="nav-dropdown-item"><span class="nav-dropdown-num">11</span>Óleos e Fluidos</a>
+          <a href="alinhamento-e-balanceamento.html" class="nav-dropdown-item current"><span class="nav-dropdown-num">12</span>Alinhamento e Balanceamento</a>
+        </div>
+        <div class="nav-dropdown-footer">
+          <a href="servicos.html">Ver todos os serviços →</a>
+        </div>
+      </div>
+    </li>
+    <li><a href="index.html#sobre">Sobre</a></li>
+    <li><a href="index.html#processo">Processo</a></li>
+    <li><a href="index.html#depoimentos">Depoimentos</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <span class="nav-phone"><strong>(61) 3326-3118</strong></span>
+    <a href="https://wa.me/556133263118?text=Olá!%20Vim%20do%20site%20da%20Minas%20e%20gostaria%20de%20fazer%20um%20orcamento." class="btn btn-red" target="_blank">WhatsApp</a>
+  </div>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- ─── MOBILE MENU ─── -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Fechar menu">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <ul class="mobile-menu-links">
+    <li><a href="index.html">Início</a></li>
+    <li>
+      <a href="servicos.html">Serviços</a>
+      <ul class="mobile-submenu">
+        <li><a href="mecanica-geral.html"><span class="nav-dropdown-num">01</span>Mecânica Geral</a></li>
+        <li><a href="motor.html"><span class="nav-dropdown-num">02</span>Motor</a></li>
+        <li><a href="cambios.html"><span class="nav-dropdown-num">03</span>Câmbios</a></li>
+        <li><a href="eletrica-e-eletronica.html"><span class="nav-dropdown-num">04</span>Elétrica e Eletrônica</a></li>
+        <li><a href="injecao-eletronica.html"><span class="nav-dropdown-num">05</span>Injeção Eletrônica</a></li>
+        <li><a href="suspensao.html"><span class="nav-dropdown-num">06</span>Suspensão</a></li>
+        <li><a href="direcao.html"><span class="nav-dropdown-num">07</span>Direção</a></li>
+        <li><a href="freios.html"><span class="nav-dropdown-num">08</span>Freios</a></li>
+        <li><a href="climatizacao.html"><span class="nav-dropdown-num">09</span>Climatização</a></li>
+        <li><a href="funilaria-e-pintura.html"><span class="nav-dropdown-num">10</span>Funilaria e Pintura</a></li>
+        <li><a href="oleos-e-fluidos.html"><span class="nav-dropdown-num">11</span>Óleos e Fluidos</a></li>
+        <li><a href="alinhamento-e-balanceamento.html"><span class="nav-dropdown-num">12</span>Alinhamento e Balanceamento</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#sobre">Sobre</a></li>
+    <li><a href="index.html#processo">Processo</a></li>
+    <li><a href="index.html#depoimentos">Depoimentos</a></li>
+  </ul>
+</div>
+
+<!-- ─── PAGE HERO ─── -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Início</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="servicos.html">Serviços</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Alinhamento e Balanceamento</span>
+    </div>
+    <div class="page-hero-tag">12 · Alinhamento e Balanceamento</div>
+    <h1 class="page-hero-title">Rodas no prumo,<br>carro <em>estável e seguro.</em></h1>
+    <p class="page-hero-desc">Alinhamento computadorizado de 4 rodas e balanceamento com equipamento de última geração. Pneus que duram mais, direção precisa e combustível que rende.</p>
+
+    <div class="hero-trust-badges">
+      <div class="hero-trust-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/></svg>
+        Alinhamento computadorizado 4 rodas
+      </div>
+      <div class="hero-trust-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Garantia de todo o serviço
+      </div>
+      <div class="hero-trust-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Serviço rápido com hora marcada
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ALINHAMENTO ─── -->
+<section class="tipo-section">
+  <div class="tipo-section-inner">
+
+    <div class="tipo-header">
+      <div>
+        <span class="section-tag">Alinhamento</span>
+        <h2 class="section-title">Geometria correta,<br><em>direção precisa</em> e pneu que dura</h2>
+        <p class="section-desc">O alinhamento ajusta os ângulos das rodas em relação ao chassi e ao solo. Fora do ponto, o veículo puxa para um lado, os pneus desgastam de forma irregular e o consumo de combustível aumenta.</p>
+      </div>
+
+      <div class="tipo-header-right">
+        <div class="tipo-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          O que cobrimos
+        </div>
+        <ul class="tipo-feature-list">
+          <li class="tipo-feature-item">
+            <div class="tipo-feature-check">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Alinhamento computadorizado das 4 rodas
+          </li>
+          <li class="tipo-feature-item">
+            <div class="tipo-feature-check">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Ajuste de cambagem, convergência e cáster
+          </li>
+          <li class="tipo-feature-item">
+            <div class="tipo-feature-check">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Alinhamento traseiro (veículos com geometria ajustável)
+          </li>
+          <li class="tipo-feature-item">
+            <div class="tipo-feature-check">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Verificação de folgas em terminais, pivôs e bandejas
+          </li>
+          <li class="tipo-feature-item">
+            <div class="tipo-feature-check">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Relatório digital antes e depois dos ajustes
+          </li>
+          <li class="tipo-feature-item">
+            <div class="tipo-feature-check">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Verificação da pressão dos pneus após o serviço
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="includes-grid">
+
+      <div class="includes-card">
+        <div class="includes-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="includes-title">Convergência</div>
+        <p class="includes-desc">A convergência define o ângulo horizontal das rodas em relação à linha central do veículo. Incorreta, provoca desgaste acelerado nas bordas dos pneus e instabilidade em linha reta.</p>
+      </div>
+
+      <div class="includes-card">
+        <div class="includes-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div class="includes-title">Cambagem</div>
+        <p class="includes-desc">A cambagem é a inclinação vertical da roda em relação à superfície. Cambagem positiva ou negativa excessiva concentra o desgaste em uma das faces do pneu e compromete a estabilidade em curvas.</p>
+      </div>
+
+      <div class="includes-card">
+        <div class="includes-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        </div>
+        <div class="includes-title">Cáster</div>
+        <p class="includes-desc">O cáster é o ângulo de inclinação do pino mestre da direção. Afeta a estabilidade direcional e a tendência do volante de retornar ao centro após uma curva — essencial para conforto e segurança.</p>
+      </div>
+
+      <div class="includes-card">
+        <div class="includes-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <div class="includes-title">Alinhamento 4 Rodas</div>
+        <p class="includes-desc">O alinhamento de 4 rodas garante que o eixo traseiro esteja perfeitamente alinhado com o eixo dianteiro. Em veículos com suspensão traseira independente, essa etapa é indispensável para o resultado correto.</p>
+      </div>
+
+      <div class="includes-card">
+        <div class="includes-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div class="includes-title">Verificação de Folgas</div>
+        <p class="includes-desc">Terminais de direção, pivôs e bandejas com folga impedem o ajuste correto do alinhamento — e retornam o veículo fora do prumo em pouco tempo. Identificamos e informamos qualquer componente desgastado antes do ajuste.</p>
+      </div>
+
+      <div class="includes-card">
+        <div class="includes-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/></svg>
+        </div>
+        <div class="includes-title">Relatório Digital</div>
+        <p class="includes-desc">Geramos o relatório de alinhamento antes e depois dos ajustes, com os ângulos medidos em cada roda. Você vê exatamente o que foi corrigido — transparência total no serviço.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ─── BALANCEAMENTO ─── -->
+<section class="tipo-section section-creme">
+  <div class="tipo-section-inner">
+
+    <div class="tipo-header">
+      <div>
+        <span class="section-tag">Balanceamento</span>
+        <h2 class="section-title">Sem vibração,<br><em>rodas equilibradas</em> a qualquer velocidade</h2>
+        <p class="section-desc">O balanceamento distribui uniformemente o peso de cada conjunto roda-pneu em torno do eixo de rotação. Desequilíbrio gera vibração no volante, desgaste prematuro e sobrecarga nos amortecedores e rolamentos.</p>
+      </div>
+
+      <div class="tipo-header-right">
+        <div class="tipo-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          O que cobrimos
+        </div>
+        <ul class="tipo-feature-list">
+          <li class="tipo-feature-item">
+            <div class="tipo-feature-check">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Balanceamento eletrônico das 4 rodas
+          </li>
+          <li class="tipo-feature-item">
+            <div class="tipo-feature-check">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Uso de contrapesos adesivos ou de presilha conforme o tipo de roda
+          </li>
+          <li class="tipo-feature-item">
+            <div class="tipo-feature-check">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Remoção de contrapesos antigos e limpeza do aro
+          </li>
+          <li class="tipo-feature-item">
+            <div class="tipo-feature-check">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Verificação de deformações e empenamentos no aro
+          </li>
+          <li class="tipo-feature-item">
+            <div class="tipo-feature-check">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Rodízio de pneus (opcional) combinado com o balanceamento
+          </li>
+          <li class="tipo-feature-item">
+            <div class="tipo-feature-check">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Calibragem dos pneus após o serviço
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="includes-grid">
+
+      <div class="includes-card">
+        <div class="includes-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="includes-title">Balanceamento Estático</div>
+        <p class="includes-desc">Corrige o desequilíbrio de massa ao redor do eixo horizontal da roda. Quando ausente, causa o efeito "salto" do pneu em velocidades mais altas — sensação de batida rítmica no volante e no assoalho.</p>
+      </div>
+
+      <div class="includes-card">
+        <div class="includes-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg>
+        </div>
+        <div class="includes-title">Balanceamento Dinâmico</div>
+        <p class="includes-desc">Corrige o desequilíbrio em dois planos — estático e lateral — para eliminar vibrações em todas as velocidades. É o padrão utilizado nos balanceadores eletrônicos modernos, com precisão de décimos de grama.</p>
+      </div>
+
+      <div class="includes-card">
+        <div class="includes-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="includes-title">Contrapesos e Aros</div>
+        <p class="includes-desc">Usamos contrapesos adesivos para rodas de liga leve (preservam a estética) e contrapesos de presilha para rodas de aço. Removemos os pesos antigos e verificamos deformações no aro antes de instalar os novos.</p>
+      </div>
+
+      <div class="includes-card">
+        <div class="includes-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+        </div>
+        <div class="includes-title">Rodízio de Pneus</div>
+        <p class="includes-desc">O rodízio redistribui o desgaste entre os pneus, prolongando a vida útil de todos. Recomendamos realizá-lo a cada balanceamento — o conjunto montado e desmontado facilita a troca de posições sem custo adicional significativo.</p>
+      </div>
+
+      <div class="includes-card">
+        <div class="includes-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="includes-title">Calibragem Inclusa</div>
+        <p class="includes-desc">Após o balanceamento, calibramos todos os pneus conforme a pressão indicada pelo fabricante. Pneu calibrado corretamente reduz o consumo de combustível, melhora a frenagem e aumenta a vida útil dos pneus.</p>
+      </div>
+
+      <div class="includes-card">
+        <div class="includes-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+        </div>
+        <div class="includes-title">Verificação de Vibrações Residuais</div>
+        <p class="includes-desc">Após o serviço, verificamos se há vibrações persistentes que possam indicar empenamento do aro, irregularidade no pneu (flat spot) ou desgaste de componentes da suspensão — causas que o balanceamento sozinho não resolve.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── QUANDO PRECISAR ─── -->
+<section class="section">
+  <div class="section-inner">
+    <span class="section-tag">Fique atento</span>
+    <h2 class="section-title">Sinais de que está na hora<br>de <em>alinhar ou balancear</em></h2>
+    <p class="section-desc">O carro dá avisos claros quando as rodas estão fora do ponto. Quanto antes você identificar, menor o desgaste nos pneus e nos componentes da suspensão.</p>
+
+    <div class="symptoms-grid">
+
+      <div class="symptom-card">
+        <div class="symptom-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+        </div>
+        <div>
+          <div class="symptom-title">Vibração no volante</div>
+          <p class="symptom-desc">Vibração que aparece acima de 80 km/h e piora com a velocidade é o sinal mais claro de balanceamento fora do ponto. O desequilíbrio numa roda se amplifica com a rotação — quanto antes ajustar, menos desgaste nos amortecedores.</p>
+        </div>
+      </div>
+
+      <div class="symptom-card">
+        <div class="symptom-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div>
+          <div class="symptom-title">Carro puxa para um lado</div>
+          <p class="symptom-desc">Se o carro desvia para a esquerda ou direita mesmo com as mãos soltas no volante, o alinhamento está fora. Pode ser convergência incorreta ou diferença de pressão — o diagnóstico define a causa exata.</p>
+        </div>
+      </div>
+
+      <div class="symptom-card">
+        <div class="symptom-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <div>
+          <div class="symptom-title">Desgaste desigual nos pneus</div>
+          <p class="symptom-desc">Desgaste excessivo em uma das bordas do pneu indica cambagem incorreta. Desgaste em forma de "serrilhado" ou "ondulado" sugere balanceamento fora do ponto. Pneu que desgasta no centro ou nas duas bordas indica problema de calibragem.</p>
+        </div>
+      </div>
+
+      <div class="symptom-card">
+        <div class="symptom-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div>
+          <div class="symptom-title">Volante torto em linha reta</div>
+          <p class="symptom-desc">Se o volante está levemente inclinado para um lado quando o carro segue em linha reta, o alinhamento de convergência ou a posição da coluna de direção estão desajustados — o serviço corrige o problema sem necessidade de troca de peças.</p>
+        </div>
+      </div>
+
+      <div class="symptom-card">
+        <div class="symptom-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+        </div>
+        <div>
+          <div class="symptom-title">Consumo maior de combustível</div>
+          <p class="symptom-desc">Rodas fora de alinhamento aumentam a resistência ao rolamento — o motor precisa trabalhar mais para manter a velocidade. O aumento no consumo é progressivo e raramente atribuído ao alinhamento, mas o impacto real é significativo.</p>
+        </div>
+      </div>
+
+      <div class="symptom-card">
+        <div class="symptom-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        </div>
+        <div>
+          <div class="symptom-title">Após troca de pneus ou batida</div>
+          <p class="symptom-desc">Qualquer troca de pneu exige novo balanceamento — o conjunto roda + pneu novo tem distribuição de massa diferente. Batidas em buracos, meio-fio ou obstáculos deslocam a geometria de suspensão e exigem revisão do alinhamento.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── COMO FUNCIONA ─── -->
+<section class="section-dark">
+  <div class="section-inner">
+    <span class="section-tag">Nosso processo</span>
+    <h2 class="section-title">Como funciona o alinhamento<br>e balanceamento na Minas</h2>
+    <p class="section-desc" style="margin-bottom: 0;">Equipamento computadorizado, técnicos especializados e relatório digital de cada ajuste. Transparência do início ao fim.</p>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-step-num">01</div>
+        <div class="process-step-title">Inspeção inicial</div>
+        <p class="process-step-desc">Verificamos a pressão dos pneus, folgas em terminais e pivôs, e condição geral dos pneus antes de qualquer ajuste — componentes desgastados invalidam o resultado.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">02</div>
+        <div class="process-step-title">Medição computadorizada</div>
+        <p class="process-step-desc">Câmeras e sensores medem os ângulos de cada roda com precisão de décimos de grau. O sistema gera o relatório inicial com os valores fora da especificação do fabricante.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">03</div>
+        <div class="process-step-title">Ajuste e balanceamento</div>
+        <p class="process-step-desc">Corrigimos a geometria nas ordens corretas — primeiro o eixo traseiro, depois o dianteiro. Em seguida, balanceamos cada roda individualmente na balanceadora eletrônica.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">04</div>
+        <div class="process-step-title">Relatório e entrega</div>
+        <p class="process-step-desc">Você recebe o relatório digital com os ângulos antes e depois dos ajustes, a calibragem revisada e o veículo pronto para rodar com garantia no serviço.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<section class="section-cta">
+  <div class="cta-inner">
+    <div>
+      <span class="cta-tag">Agende o alinhamento e balanceamento</span>
+      <h2 class="cta-title">Pneu que dura<br>mais começa<br>aqui.</h2>
+      <p class="cta-desc">Alinhamento e balanceamento são os serviços com maior retorno para o motorista: pneus que duram mais, consumo menor e direção mais segura. Agende agora — atendimento rápido com hora marcada.</p>
+
+      <div class="cta-contact">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <span>SCLRN 703 Bloco C Loja 02, <strong>Asa Norte, Brasília/DF</strong></span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6.29 6.29l.95-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <span><strong>(61) 3326-3118</strong> · WhatsApp disponível</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <span>Segunda a Sexta: <strong>8h–18h</strong> · Sábado: <strong>8h–13h</strong></span>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;">
+        <a href="https://wa.me/556133263118?text=Olá!%20Vim%20do%20site%20da%20Minas%20e%20gostaria%20de%20fazer%20um%20orcamento%20para%20Alinhamento%20e%20Balanceamento." class="btn btn-whatsapp" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Solicitar orçamento
+        </a>
+        <a href="https://share.google/TWuO3Q0Pf0nq4JPUA" class="btn btn-outline-white" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Ver no mapa
+        </a>
+      </div>
+    </div>
+
+    <div class="cta-wa-card">
+      <div style="width:64px;height:64px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      </div>
+      <div class="cta-wa-title">Fale com a gente</div>
+      <p class="cta-wa-sub">Orçamento gratuito e sem compromisso. Respondemos em até 5 minutos no horário comercial.</p>
+      <a href="https://wa.me/556133263118?text=Olá!%20Vim%20do%20site%20da%20Minas%20e%20gostaria%20de%20fazer%20um%20orcamento%20para%20Alinhamento%20e%20Balanceamento." class="btn btn-whatsapp" target="_blank" style="width:100%;justify-content:center;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Solicitar orçamento
+      </a>
+      <div style="font-size:12px;color:#aaa;">(61) 3326-3118 · (61) 3326-4522</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── LINK VER TODOS OS SERVIÇOS ─── -->
+<div class="service-nav">
+  <div class="service-nav-inner">
+    <a href="servicos.html" class="service-nav-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Ver todos os serviços
+    </a>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <img src="imagens/logo-minasescapamentos-footer.png" alt="Minas Escapamentos" class="footer-logo" loading="lazy">
+        <p class="footer-brand-desc">Centro automotivo completo na Asa Norte, em Brasília. Desde 1997 conservando tradição, honestidade e excelência no cuidado do seu veículo.</p>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Serviços</div>
+        <ul class="footer-links">
+          <li><a href="mecanica-geral.html">Mecânica Geral</a></li>
+          <li><a href="motor.html">Motor</a></li>
+          <li><a href="cambios.html">Câmbio Manual e Automático</a></li>
+          <li><a href="eletrica-e-eletronica.html">Elétrica e Eletrônica</a></li>
+          <li><a href="suspensao.html">Suspensão e Direção</a></li>
+          <li><a href="freios.html">Freios</a></li>
+          <li><a href="climatizacao.html">Climatização</a></li>
+          <li><a href="alinhamento-e-balanceamento.html">Alinhamento e Balanceamento</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Empresa</div>
+        <ul class="footer-links">
+          <li><a href="index.html#sobre">Nossa história</a></li>
+          <li><a href="index.html#processo">Processo Transparente</a></li>
+          <li><a href="index.html#depoimentos">Depoimentos</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Contato</div>
+        <ul class="footer-links">
+          <li><span>SCLRN 703 Bloco C Loja 02</span></li>
+          <li><span>Asa Norte, Brasília/DF</span></li>
+          <li><a href="tel:6133263118">(61) 3326-3118</a></li>
+          <li><a href="tel:6133264522">(61) 3326-4522</a></li>
+          <li><span>Seg–Sex: 8h às 18h</span></li>
+          <li><span>Sáb: 8h às 13h</span></li>
+        </ul>
+
+        <div class="social-links" style="margin-top:24px;">
+          <a href="https://www.instagram.com/minasescapamentos/" target="_blank" class="social-link" title="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://wa.me/556133263118?text=Olá!%20Vim%20do%20site%20da%20Minas%20e%20gostaria%20de%20fazer%20um%20orcamento." target="_blank" class="social-link" title="WhatsApp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">2026 Minas Escapamentos. Todos os direitos reservados.</p>
+      <div style="display:flex;gap:20px;">
+        <a href="#" style="font-size:12px;color:rgba(255,255,255,0.25);text-decoration:none;">Política de privacidade</a>
+        <a href="#" style="font-size:12px;color:rgba(255,255,255,0.25);text-decoration:none;">Termos de uso</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-brand-big">MINAS ESCAPAMENTOS</div>
+</footer>
+
+<!-- ─── WHATSAPP FLOAT ─── -->
+<a href="https://wa.me/556133263118?text=Olá!%20Vim%20do%20site%20da%20Minas%20e%20gostaria%20de%20fazer%20um%20orcamento." class="whatsapp-float" target="_blank" title="Falar no WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+
+<!-- ─── MOBILE BOTTOM BAR ─── -->
+<div class="mobile-bottom-bar">
+  <a href="tel:6133263118" class="mobile-bottom-phone">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6.29 6.29l.95-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    (61) 3326-3118
+  </a>
+  <a href="https://wa.me/556133263118?text=Ol%C3%A1!%20Vim%20do%20site%20da%20Minas%20e%20gostaria%20de%20fazer%20um%20orcamento." class="mobile-bottom-wa" target="_blank">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    WhatsApp
+  </a>
+</div>
+
+<!-- ─── BACK TO TOP ─── -->
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -25,6 +25,6 @@ jobs:
             mirror -R --delete \
               --exclude-glob .git \
               --exclude-glob .github \
-              . /public_html/;
+              01-design/sites/2026-05-30-v4/ /public_html/;
             quit
           "
