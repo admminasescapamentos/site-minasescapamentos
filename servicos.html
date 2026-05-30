@@ -1,0 +1,1349 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serviços — Minas Escapamentos | Mecânica Completa em Brasília</title>
+  <link rel="icon" type="image/png" href="imagens/favicon-minasescapamentos.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,700;0,800;0,900;1,800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bordo: #7B1818;
+      --bordo-dark: #5C1010;
+      --preto: #1A1A1A;
+      --vermelho: #E81C2E;
+      --creme: #F9F5F0;
+      --cinza: #E0D9D0;
+      --cinza-medio: #9B9390;
+      --branco: #FFFFFF;
+      --font-display: 'Barlow', sans-serif;
+      --font-body: 'Space Grotesk', sans-serif;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--preto);
+      background: var(--branco);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav-logo img { height: 52px; width: auto; object-fit: contain; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 14px; font-weight: 500;
+      color: #555; text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--bordo); }
+
+    /* ─── NAV DROPDOWN ─── */
+    .nav-item-dropdown { position: relative; }
+
+    .nav-dropdown-trigger {
+      display: flex; align-items: center; gap: 5px; cursor: pointer;
+    }
+
+    .nav-dropdown-arrow {
+      transition: transform 0.2s;
+      flex-shrink: 0;
+      color: #999;
+    }
+
+    .nav-item-dropdown:hover .nav-dropdown-arrow,
+    .nav-item-dropdown:focus-within .nav-dropdown-arrow {
+      transform: rotate(180deg);
+      color: var(--bordo);
+    }
+
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 16px);
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      background: var(--branco);
+      border-radius: 14px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.14), 0 2px 8px rgba(0,0,0,0.06);
+      border: 1px solid var(--cinza);
+      min-width: 400px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+      z-index: 200;
+      overflow: hidden;
+    }
+
+    .nav-item-dropdown:hover .nav-dropdown,
+    .nav-item-dropdown:focus-within .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-dropdown-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      padding: 8px;
+    }
+
+    .nav-dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #444;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+
+    .nav-dropdown-item:hover {
+      background: var(--creme);
+      color: var(--bordo);
+    }
+
+    .nav-dropdown-num {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--vermelho);
+      letter-spacing: 1px;
+      flex-shrink: 0;
+      width: 18px;
+    }
+
+    .nav-dropdown-footer {
+      border-top: 1px solid var(--cinza);
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .nav-dropdown-footer a {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--bordo);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      transition: opacity 0.2s;
+    }
+
+    .nav-dropdown-footer a:hover { opacity: 0.7; }
+
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .nav-phone { font-size: 13px; color: var(--cinza-medio); font-weight: 500; }
+    .nav-phone strong { color: var(--preto); }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 22px; border-radius: 8px;
+      font-family: var(--font-body); font-size: 14px; font-weight: 600;
+      text-decoration: none; cursor: pointer; border: none;
+      transition: all 0.2s; letter-spacing: 0.2px;
+    }
+    .btn-red { background: var(--vermelho); color: white; }
+    .btn-red:hover { background: #C5001F; transform: translateY(-1px); }
+    .btn-bordo { background: var(--bordo); color: white; }
+    .btn-bordo:hover { background: var(--bordo-dark); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--bordo); border: 2px solid var(--bordo); }
+    .btn-outline:hover { background: var(--bordo); color: white; }
+    .btn-outline-white { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.4); }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: white; }
+    .btn-whatsapp { background: #25D366; color: white; font-size: 15px; padding: 14px 28px; }
+    .btn-whatsapp:hover { background: #1fba57; transform: translateY(-1px); }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero {
+      background: var(--preto);
+      padding: 80px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(123,24,24,0.4) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .page-hero::after {
+      content: 'SERVIÇOS';
+      position: absolute;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 220px;
+      color: rgba(255,255,255,0.03);
+      right: -20px; bottom: -30px;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -4px;
+    }
+
+    .page-hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 28px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.7); }
+    .breadcrumb-sep { font-size: 11px; }
+
+    .page-hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.65);
+      border: 1px solid rgba(255,255,255,0.14);
+      padding: 6px 14px; border-radius: 100px;
+      font-size: 11px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; margin-bottom: 24px;
+    }
+    .page-hero-tag::before {
+      content: ''; width: 6px; height: 6px;
+      background: var(--vermelho); border-radius: 50%; flex-shrink: 0;
+    }
+
+    .page-hero-title {
+      font-family: var(--font-display);
+      font-weight: 800; font-size: 72px; line-height: 1.0;
+      color: var(--branco); letter-spacing: -2px; margin-bottom: 20px;
+    }
+    .page-hero-title em { font-style: italic; color: var(--vermelho); }
+
+    .page-hero-desc {
+      font-size: 16px; color: rgba(255,255,255,0.6);
+      max-width: 560px; line-height: 1.75; margin-bottom: 36px;
+    }
+
+    .page-hero-stats {
+      display: flex; gap: 48px;
+      padding-top: 36px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .hero-stat-num {
+      font-family: var(--font-display);
+      font-weight: 800; font-size: 36px;
+      color: var(--branco); line-height: 1; letter-spacing: -1px;
+    }
+    .hero-stat-label {
+      font-size: 11px; color: rgba(255,255,255,0.4);
+      text-transform: uppercase; letter-spacing: 0.7px;
+      margin-top: 4px; font-weight: 500;
+    }
+
+    /* ─── SERVICES GRID ─── */
+    .services-section {
+      padding: 80px 48px;
+      background: var(--branco);
+    }
+
+    .services-inner { max-width: 1200px; margin: 0 auto; }
+
+    .services-intro {
+      display: flex; align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 56px; gap: 40px;
+    }
+
+    .section-tag {
+      font-size: 11px; font-weight: 700;
+      color: var(--vermelho); text-transform: uppercase;
+      letter-spacing: 1.5px; margin-bottom: 10px; display: block;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 800; font-size: 52px; line-height: 1.05;
+      letter-spacing: -1.5px; color: var(--preto);
+    }
+    .section-title em { font-style: italic; color: var(--bordo); }
+
+    .section-desc {
+      font-size: 15px; color: #666;
+      line-height: 1.75; max-width: 400px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+    }
+
+    .svc-card {
+      border: 1.5px solid var(--cinza);
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--branco);
+      display: flex; flex-direction: column;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    }
+    .svc-card:hover {
+      border-color: var(--bordo);
+      box-shadow: 0 12px 40px rgba(123,24,24,0.1);
+      transform: translateY(-4px);
+    }
+
+    .svc-card-accent {
+      height: 4px;
+      background: linear-gradient(90deg, var(--bordo), var(--vermelho));
+    }
+
+    .svc-card-body { padding: 28px 32px 32px; flex: 1; display: flex; flex-direction: column; }
+
+    .svc-card-num {
+      font-family: var(--font-display);
+      font-size: 12px; letter-spacing: 2px;
+      color: var(--vermelho); margin-bottom: 12px; font-weight: 700;
+    }
+
+    .svc-card-title {
+      font-family: var(--font-display);
+      font-weight: 800; font-size: 26px;
+      color: var(--preto); margin-bottom: 12px;
+      letter-spacing: -0.5px; line-height: 1.1;
+    }
+
+    .svc-card-desc {
+      font-size: 14px; color: #666;
+      line-height: 1.7; margin-bottom: 20px;
+    }
+
+    .svc-card-list {
+      list-style: none; margin-bottom: 28px; flex: 1;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .svc-card-list li {
+      font-size: 13px; color: #555;
+      display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;
+    }
+    .svc-card-list li::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: var(--vermelho);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    .svc-card-footer {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding-top: 20px;
+      border-top: 1px solid var(--cinza);
+      margin-top: auto;
+    }
+
+    .svc-card-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 700;
+      color: var(--bordo); text-decoration: none;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      transition: gap 0.2s;
+    }
+    .svc-card-link:hover { gap: 10px; }
+    .svc-card-link svg { transition: transform 0.2s; }
+    .svc-card-link:hover svg { transform: translateX(3px); }
+
+    .svc-card-wa {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; color: #25D366; font-weight: 600;
+      text-decoration: none; transition: opacity 0.2s;
+    }
+    .svc-card-wa:hover { opacity: 0.75; }
+
+    /* ─── PROMISE STRIP ─── */
+    .promise-strip {
+      background: var(--creme);
+      padding: 60px 48px;
+      border-top: 1px solid var(--cinza);
+      border-bottom: 1px solid var(--cinza);
+    }
+    .promise-strip-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
+    }
+    .promise-item { display: flex; flex-direction: column; gap: 10px; }
+    .promise-icon {
+      width: 44px; height: 44px;
+      background: var(--bordo);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: white; flex-shrink: 0;
+    }
+    .promise-title {
+      font-family: var(--font-display);
+      font-weight: 800; font-size: 18px;
+      color: var(--preto); letter-spacing: -0.3px;
+    }
+    .promise-desc { font-size: 13px; color: #666; line-height: 1.6; }
+
+    /* ─── CTA SECTION ─── */
+    .section-cta {
+      background: var(--bordo);
+      padding: 100px 48px;
+      position: relative; overflow: hidden;
+    }
+    .section-cta::after {
+      content: 'MINAS';
+      position: absolute;
+      font-family: var(--font-display); font-weight: 900; font-size: 260px;
+      color: rgba(255,255,255,0.04);
+      bottom: -40px; right: -20px;
+      line-height: 1; pointer-events: none; user-select: none; letter-spacing: -4px;
+    }
+    .cta-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 360px;
+      gap: 80px; align-items: center; position: relative; z-index: 1;
+    }
+    .cta-tag {
+      font-size: 11px; font-weight: 700;
+      color: rgba(255,255,255,0.4); margin-bottom: 16px;
+      text-transform: uppercase; letter-spacing: 2px; display: block;
+    }
+    .cta-title {
+      font-family: var(--font-display); font-weight: 800; font-size: 68px;
+      color: var(--branco); line-height: 1.02; margin-bottom: 20px; letter-spacing: -2px;
+    }
+    .cta-desc { color: rgba(255,255,255,0.65); font-size: 16px; line-height: 1.75; margin-bottom: 36px; }
+    .cta-contact { display: flex; flex-direction: column; gap: 14px; }
+    .contact-item { display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,0.8); font-size: 15px; }
+    .contact-icon {
+      width: 36px; height: 36px; background: rgba(255,255,255,0.1);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .contact-item strong { color: var(--branco); }
+    .cta-wa-card {
+      background: var(--branco); border-radius: 16px; padding: 32px;
+      display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px;
+    }
+    .cta-wa-title {
+      font-family: var(--font-display); font-weight: 800; font-size: 28px;
+      letter-spacing: -0.5px; color: var(--preto);
+    }
+    .cta-wa-sub { font-size: 13px; color: var(--cinza-medio); line-height: 1.5; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--preto);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 60px 48px 0;
+      position: relative; overflow: hidden;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top {
+      display: grid; grid-template-columns: 260px 1fr 1fr 1fr;
+      gap: 48px; padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .footer-brand-desc { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.75; margin-top: 20px; }
+    .footer-col-title {
+      font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.25);
+      text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 18px;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .footer-links a, .footer-links span { font-size: 14px; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover, .footer-links span:hover { color: var(--branco); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 28px 0 32px;
+    }
+    .footer-copyright { font-size: 12px; color: rgba(255,255,255,0.25); }
+    .footer-brand-big {
+      font-family: var(--font-display); font-weight: 900; font-size: 120px;
+      color: rgba(255,255,255,0.025);
+      position: absolute; bottom: 32px; left: 0; right: 0;
+      text-align: center; pointer-events: none; user-select: none;
+      line-height: 1; letter-spacing: -2px;
+    }
+    .social-links { display: flex; gap: 10px; }
+    .social-link {
+      width: 36px; height: 36px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.45); text-decoration: none; transition: all 0.2s;
+    }
+    .social-link:hover { border-color: var(--vermelho); color: var(--vermelho); background: rgba(232,28,46,0.08); }
+
+    /* ─── WHATSAPP FLOAT ─── */
+    .whatsapp-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 200;
+      background: #25D366; color: white;
+      width: 56px; height: 56px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.5); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .promise-strip-inner { grid-template-columns: repeat(2, 1fr); }
+      .cta-inner { grid-template-columns: 1fr; }
+      .cta-wa-card { display: none; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .page-hero { padding: 60px 24px; }
+      .page-hero-title { font-size: 42px; }
+      .services-section { padding: 60px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .services-intro { flex-direction: column; align-items: flex-start; }
+      .promise-strip { padding: 48px 24px; }
+      .promise-strip-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .section-cta { padding: 60px 24px; }
+      .cta-title { font-size: 40px; }
+      footer { padding: 48px 24px 0; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .page-hero-stats { gap: 28px; flex-wrap: wrap; }
+    }
+
+    .footer-logo { height: 44px; width: auto; }
+    @media (min-width: 1025px) {
+      .footer-logo { width: 155px; height: auto; }
+    }
+  
+    /* ─── MOBILE NAV HAMBURGER ─── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px; height: 40px;
+      background: none; border: none;
+      cursor: pointer; padding: 4px;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .nav-hamburger:hover { background: rgba(0,0,0,0.05); }
+    .nav-hamburger span {
+      display: block; height: 2px; width: 22px;
+      background: var(--preto); border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ─── MOBILE MENU OVERLAY ─── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 200;
+      background: var(--branco);
+      overflow-y: auto;
+      padding: 72px 24px 120px;
+      flex-direction: column;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu-close {
+      position: absolute;
+      top: 14px; right: 14px;
+      width: 40px; height: 40px;
+      background: none; border: none;
+      cursor: pointer; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--preto);
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .mobile-menu-close:hover { background: rgba(0,0,0,0.06); }
+    .mobile-menu-links { list-style: none; display: flex; flex-direction: column; }
+    .mobile-menu-links > li { border-bottom: 1px solid var(--cinza); }
+    .mobile-menu-links > li > a {
+      display: block; padding: 16px 0;
+      font-size: 18px; font-weight: 600;
+      color: var(--preto); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .mobile-menu-links > li > a:hover { color: var(--bordo); }
+    .mobile-submenu {
+      list-style: none; padding: 0 0 12px 0;
+      display: flex; flex-direction: column; gap: 2px;
+    }
+    .mobile-submenu a {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 8px;
+      font-size: 14px; font-weight: 500;
+      color: #666; text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .mobile-submenu a:hover { background: var(--creme); color: var(--bordo); }
+    .mobile-submenu .nav-dropdown-num {
+      font-size: 10px; font-weight: 700;
+      color: var(--vermelho); letter-spacing: 1px;
+      width: 18px; flex-shrink: 0; font-family: var(--font-display);
+    }
+
+    /* ─── MOBILE BOTTOM BAR ─── */
+    .mobile-bottom-bar {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 150;
+      background: var(--preto);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      height: 64px;
+      align-items: stretch;
+    }
+    .mobile-bottom-phone {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      text-decoration: none; color: var(--branco);
+      font-size: 13px; font-weight: 600;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      transition: background 0.2s;
+    }
+    .mobile-bottom-phone:hover { background: rgba(255,255,255,0.06); }
+    .mobile-bottom-wa {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      text-decoration: none; background: #25D366; color: white;
+      font-size: 13px; font-weight: 600;
+      transition: background 0.2s;
+    }
+    .mobile-bottom-wa:hover { background: #1fba57; }
+
+    /* ─── BACK TO TOP ─── */
+    .back-to-top {
+      position: fixed;
+      right: 16px; bottom: 80px;
+      z-index: 140;
+      width: 36px; height: 36px;
+      background: rgba(26,26,26,0.65);
+      color: white; border: none; border-radius: 8px;
+      align-items: center; justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      opacity: 0; display: none;
+      transition: opacity 0.25s;
+    }
+    .back-to-top.visible { opacity: 1; }
+
+    /* ─── MOBILE OVERRIDES (≤ 768px) ─── */
+    @media (max-width: 768px) {
+      nav { position: static; z-index: auto; }
+      .nav-hamburger { display: flex; }
+      .nav-right { display: none; }
+      .whatsapp-float { display: none !important; }
+      .mobile-bottom-bar { display: flex; }
+      .back-to-top { display: flex; }
+      body { padding-bottom: 64px; }
+    }  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-logo">
+    <a href="index.html"><img src="imagens/logo-minasescapamentos-navbar.png" alt="Minas Escapamentos"></a>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li class="nav-item-dropdown">
+      <a href="servicos.html" class="nav-dropdown-trigger active">
+        Serviços
+        <svg class="nav-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-grid">
+          <a href="mecanica-geral.html" class="nav-dropdown-item"><span class="nav-dropdown-num">01</span>Mecânica Geral</a>
+          <a href="motor.html" class="nav-dropdown-item"><span class="nav-dropdown-num">02</span>Motor</a>
+          <a href="cambios.html" class="nav-dropdown-item"><span class="nav-dropdown-num">03</span>Câmbios</a>
+          <a href="eletrica-e-eletronica.html" class="nav-dropdown-item"><span class="nav-dropdown-num">04</span>Elétrica e Eletrônica</a>
+          <a href="injecao-eletronica.html" class="nav-dropdown-item"><span class="nav-dropdown-num">05</span>Injeção Eletrônica</a>
+          <a href="suspensao.html" class="nav-dropdown-item"><span class="nav-dropdown-num">06</span>Suspensão</a>
+          <a href="direcao.html" class="nav-dropdown-item"><span class="nav-dropdown-num">07</span>Direção</a>
+          <a href="freios.html" class="nav-dropdown-item"><span class="nav-dropdown-num">08</span>Freios</a>
+          <a href="climatizacao.html" class="nav-dropdown-item"><span class="nav-dropdown-num">09</span>Climatização</a>
+          <a href="funilaria-e-pintura.html" class="nav-dropdown-item"><span class="nav-dropdown-num">10</span>Funilaria e Pintura</a>
+          <a href="oleos-e-fluidos.html" class="nav-dropdown-item"><span class="nav-dropdown-num">11</span>Óleos e Fluidos</a>
+          <a href="alinhamento-e-balanceamento.html" class="nav-dropdown-item"><span class="nav-dropdown-num">12</span>Alinhamento e Balanceamento</a>
+        </div>
+        <div class="nav-dropdown-footer">
+          <a href="servicos.html">Ver todos os serviços →</a>
+        </div>
+      </div>
+    </li>
+    <li><a href="index.html#sobre">Sobre</a></li>
+    <li><a href="index.html#processo">Processo</a></li>
+    <li><a href="index.html#depoimentos">Depoimentos</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <span class="nav-phone"><strong>(61) 3326-3118</strong></span>
+    <a href="https://wa.me/556133263118?text=Olá!%20Vim%20do%20site%20da%20Minas%20e%20gostaria%20de%20fazer%20um%20orcamento." class="btn btn-red" target="_blank">WhatsApp</a>
+  </div>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- ─── MOBILE MENU ─── -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Fechar menu">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <ul class="mobile-menu-links">
+    <li><a href="index.html">Início</a></li>
+    <li>
+      <a href="servicos.html">Serviços</a>
+      <ul class="mobile-submenu">
+        <li><a href="mecanica-geral.html"><span class="nav-dropdown-num">01</span>Mecânica Geral</a></li>
+        <li><a href="motor.html"><span class="nav-dropdown-num">02</span>Motor</a></li>
+        <li><a href="cambios.html"><span class="nav-dropdown-num">03</span>Câmbios</a></li>
+        <li><a href="eletrica-e-eletronica.html"><span class="nav-dropdown-num">04</span>Elétrica e Eletrônica</a></li>
+        <li><a href="injecao-eletronica.html"><span class="nav-dropdown-num">05</span>Injeção Eletrônica</a></li>
+        <li><a href="suspensao.html"><span class="nav-dropdown-num">06</span>Suspensão</a></li>
+        <li><a href="direcao.html"><span class="nav-dropdown-num">07</span>Direção</a></li>
+        <li><a href="freios.html"><span class="nav-dropdown-num">08</span>Freios</a></li>
+        <li><a href="climatizacao.html"><span class="nav-dropdown-num">09</span>Climatização</a></li>
+        <li><a href="funilaria-e-pintura.html"><span class="nav-dropdown-num">10</span>Funilaria e Pintura</a></li>
+        <li><a href="oleos-e-fluidos.html"><span class="nav-dropdown-num">11</span>Óleos e Fluidos</a></li>
+        <li><a href="alinhamento-e-balanceamento.html"><span class="nav-dropdown-num">12</span>Alinhamento e Balanceamento</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#sobre">Sobre</a></li>
+    <li><a href="index.html#processo">Processo</a></li>
+    <li><a href="index.html#depoimentos">Depoimentos</a></li>
+  </ul>
+</div>
+
+<!-- ─── PAGE HERO ─── -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Início</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Serviços</span>
+    </div>
+    <div class="page-hero-tag">Centro automotivo completo · Asa Norte, Brasília</div>
+    <h1 class="page-hero-title">Tudo de que seu<br>carro <em>precisa,</em><br>em um só lugar.</h1>
+    <p class="page-hero-desc">Seja qual for a necessidade do seu veículo, a <strong>Minas Escapamentos</strong> garante diagnóstico honesto, orçamento transparente e garantia em todo serviço realizado. Há 28 anos cuidamos dos veículos de Brasília.</p>
+    <div class="page-hero-stats">
+      <div>
+        <div class="hero-stat-num">12</div>
+        <div class="hero-stat-label">Especialidades</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">28</div>
+        <div class="hero-stat-label">Anos de tradição</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">380+</div>
+        <div class="hero-stat-label">Carros por mês</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">4,9★</div>
+        <div class="hero-stat-label">Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROMISE STRIP ─── -->
+<div class="promise-strip">
+  <div class="promise-strip-inner">
+    <div class="promise-item">
+      <div class="promise-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/></svg>
+      </div>
+      <div class="promise-title">Diagnóstico honesto</div>
+      <p class="promise-desc">Identificamos do que o carro precisa — e só isso. Sem inventar defeitos ou empurrar serviços desnecessários.</p>
+    </div>
+    <div class="promise-item">
+      <div class="promise-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      </div>
+      <div class="promise-title">Orçamento antes de tudo</div>
+      <p class="promise-desc">Nenhum parafuso é mexido sem o seu OK. Você recebe o orçamento completo e decide o que quer fazer.</p>
+    </div>
+    <div class="promise-item">
+      <div class="promise-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="promise-title">Garantia em tudo</div>
+      <p class="promise-desc">Todo serviço tem garantia. Se surgir algum problema relacionado ao que foi feito, a gente resolve sem discussão.</p>
+    </div>
+    <div class="promise-item">
+      <div class="promise-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="promise-title">Entrega no prazo</div>
+      <p class="promise-desc">Respeitamos o prazo combinado. Você é avisado em tempo real sobre cada etapa do serviço.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ─── SERVICES ─── -->
+<section class="services-section">
+  <div class="services-inner">
+    <div class="services-intro">
+      <div>
+        <span class="section-tag">Nossas especialidades</span>
+        <h2 class="section-title">O que fazemos<br>com <em>excelência</em></h2>
+      </div>
+      <p class="section-desc">Clique em qualquer serviço para conhecer em detalhe o que está incluso, como funciona e quando você precisa.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- 01 · Mecânica Geral -->
+      <div class="svc-card">
+        <div class="svc-card-accent"></div>
+        <div class="svc-card-body">
+          <div class="svc-card-num">01 · Mecânica Geral</div>
+          <div class="svc-card-title">Mecânica Geral</div>
+          <p class="svc-card-desc">Manutenção preventiva e corretiva completa. Revisamos tudo e fazemos o diagnóstico honesto do que seu carro realmente precisa — sem exageros.</p>
+          <ul class="svc-card-list">
+            <li>Revisão completa por quilometragem</li>
+            <li>Manutenção preventiva programada</li>
+            <li>Diagnóstico eletrônico multi-marca</li>
+            <li>Troca de filtros (ar, óleo, combustível, cabine)</li>
+            <li>Velas de ignição e sistema de arrefecimento</li>
+          </ul>
+          <div class="svc-card-footer">
+            <a href="mecanica-geral.html" class="svc-card-link">
+              Ver detalhes
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://wa.me/556133263118?text=Ola!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Mec%C3%A2nica%20Geral." class="svc-card-wa" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              Pedir orçamento
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 · Motor -->
+      <div class="svc-card">
+        <div class="svc-card-accent"></div>
+        <div class="svc-card-body">
+          <div class="svc-card-num">02 · Motor</div>
+          <div class="svc-card-title">Motor</div>
+          <p class="svc-card-desc">Retífica, troca de componentes internos e overhaul completo. Do simples ao mais complexo, com garantia em todo serviço realizado.</p>
+          <ul class="svc-card-list">
+            <li>Retífica de motor completa</li>
+            <li>Troca de junta do cabeçote</li>
+            <li>Overhaul (desmontagem e revisão geral)</li>
+            <li>Troca de correia dentada e tensor</li>
+            <li>Reparo de vazamentos de óleo e água</li>
+          </ul>
+          <div class="svc-card-footer">
+            <a href="motor.html" class="svc-card-link">
+              Ver detalhes
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://wa.me/556133263118?text=Ola!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Motor." class="svc-card-wa" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              Pedir orçamento
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 · Câmbio -->
+      <div class="svc-card">
+        <div class="svc-card-accent"></div>
+        <div class="svc-card-body">
+          <div class="svc-card-num">03 · Câmbio</div>
+          <div class="svc-card-title">Câmbio Manual e Automático</div>
+          <p class="svc-card-desc">Revisão, reparo e substituição de câmbios manuais e automáticos. Peças de qualidade e mão de obra especializada.</p>
+          <ul class="svc-card-list">
+            <li>Revisão e reparo de câmbio manual</li>
+            <li>Manutenção de câmbio automático</li>
+            <li>Troca de óleo de câmbio</li>
+            <li>Reparo de embreagem (pedal, disco, platô)</li>
+            <li>Substituição completa quando necessário</li>
+          </ul>
+          <div class="svc-card-footer">
+            <a href="cambios.html" class="svc-card-link">
+              Ver detalhes
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://wa.me/556133263118?text=Ola!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20C%C3%A2mbio." class="svc-card-wa" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              Pedir orçamento
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 · Elétrica e Eletrônica -->
+      <div class="svc-card">
+        <div class="svc-card-accent"></div>
+        <div class="svc-card-body">
+          <div class="svc-card-num">04 · Elétrica e Eletrônica</div>
+          <div class="svc-card-title">Elétrica e Eletrônica</div>
+          <p class="svc-card-desc">Diagnóstico e reparo completo do sistema elétrico e eletrônico: alternador, bateria, fiação, módulos e centrais eletrônicas — com scanner de última geração.</p>
+          <ul class="svc-card-list">
+            <li>Diagnóstico elétrico completo</li>
+            <li>Reparo e substituição de alternador e motor de partida</li>
+            <li>Troca e teste de bateria</li>
+            <li>Scanner eletrônico multi-marca (ECU/BCM)</li>
+            <li>Leitura e reset de códigos de falha</li>
+            <li>Reparo de fiação, chicote e painel de instrumentos</li>
+          </ul>
+          <div class="svc-card-footer">
+            <a href="eletrica-e-eletronica.html" class="svc-card-link">
+              Ver detalhes
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://wa.me/556133263118?text=Ola!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20El%C3%A9trica%20e%20Eletr%C3%B4nica." class="svc-card-wa" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              Pedir orçamento
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 · Injeção -->
+      <div class="svc-card">
+        <div class="svc-card-accent"></div>
+        <div class="svc-card-body">
+          <div class="svc-card-num">05 · Injeção</div>
+          <div class="svc-card-title">Injeção Eletrônica</div>
+          <p class="svc-card-desc">Limpeza, regulagem e reparo do sistema de injeção eletrônica. Motor econômico, potente e sem falhas de funcionamento.</p>
+          <ul class="svc-card-list">
+            <li>Limpeza ultrassônica de bicos injetores</li>
+            <li>Regulagem da mistura ar/combustível</li>
+            <li>Reparo de corpo de borboleta</li>
+            <li>Substituição de sensores (O2, MAP, TPS, IAC)</li>
+            <li>Teste de pressão do sistema de combustível</li>
+          </ul>
+          <div class="svc-card-footer">
+            <a href="injecao-eletronica.html" class="svc-card-link">
+              Ver detalhes
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://wa.me/556133263118?text=Ola!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Inje%C3%A7%C3%A3o%20Eletr%C3%B4nica." class="svc-card-wa" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              Pedir orçamento
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 06 · Suspensão -->
+      <div class="svc-card">
+        <div class="svc-card-accent"></div>
+        <div class="svc-card-body">
+          <div class="svc-card-num">06 · Suspensão</div>
+          <div class="svc-card-title">Suspensão</div>
+          <p class="svc-card-desc">Revisão completa de amortecedores, molas, bieletas e geometria. Conforto, estabilidade e segurança em cada curva.</p>
+          <ul class="svc-card-list">
+            <li>Troca de amortecedores e molas</li>
+            <li>Substituição de bandejas e buchas</li>
+            <li>Reparo de bieletas e pivôs</li>
+            <li>Correção de geometria e caster</li>
+            <li>Diagnóstico de ruídos na suspensão</li>
+          </ul>
+          <div class="svc-card-footer">
+            <a href="suspensao.html" class="svc-card-link">
+              Ver detalhes
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://wa.me/556133263118?text=Ola!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Suspens%C3%A3o." class="svc-card-wa" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              Pedir orçamento
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 07 · Direção -->
+      <div class="svc-card">
+        <div class="svc-card-accent"></div>
+        <div class="svc-card-body">
+          <div class="svc-card-num">07 · Direção</div>
+          <div class="svc-card-title">Direção</div>
+          <p class="svc-card-desc">Direção hidráulica, elétrica e mecânica. Reparo e substituição com precisão para um volante firme e responsivo.</p>
+          <ul class="svc-card-list">
+            <li>Reparo de caixa de direção</li>
+            <li>Troca de bomba hidráulica e correia</li>
+            <li>Reparo de direção elétrica (EPS)</li>
+            <li>Substituição de terminais e barras de direção</li>
+            <li>Alinhamento da direção após reparo</li>
+          </ul>
+          <div class="svc-card-footer">
+            <a href="direcao.html" class="svc-card-link">
+              Ver detalhes
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://wa.me/556133263118?text=Ola!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Dire%C3%A7%C3%A3o." class="svc-card-wa" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              Pedir orçamento
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 08 · Freios -->
+      <div class="svc-card">
+        <div class="svc-card-accent"></div>
+        <div class="svc-card-body">
+          <div class="svc-card-num">08 · Freios</div>
+          <div class="svc-card-title">Freios</div>
+          <p class="svc-card-desc">Sistema de frenagem revisado item a item: pastilhas, discos, tambores, fluido e ABS. Segurança sem concessões.</p>
+          <ul class="svc-card-list">
+            <li>Troca de pastilhas e discos de freio</li>
+            <li>Reparo de tambores e lonas traseiras</li>
+            <li>Sangria e troca de fluido de freio</li>
+            <li>Reparo do sistema ABS</li>
+            <li>Reparo de freio de mão (mecânico e elétrico)</li>
+          </ul>
+          <div class="svc-card-footer">
+            <a href="freios.html" class="svc-card-link">
+              Ver detalhes
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://wa.me/556133263118?text=Ola!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Freios." class="svc-card-wa" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              Pedir orçamento
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 09 · Climatização -->
+      <div class="svc-card">
+        <div class="svc-card-accent"></div>
+        <div class="svc-card-body">
+          <div class="svc-card-num">09 · Climatização</div>
+          <div class="svc-card-title">Climatização</div>
+          <p class="svc-card-desc">Ar-condicionado com carga de gás, higienização e reparo do compressor. Conforto em qualquer temperatura de Brasília.</p>
+          <ul class="svc-card-list">
+            <li>Carga e recarga de gás (R134a / R1234yf)</li>
+            <li>Reparo e substituição de compressor</li>
+            <li>Higienização do sistema e evaporador</li>
+            <li>Troca de filtro de cabine</li>
+            <li>Reparo de condensador e válvula de expansão</li>
+          </ul>
+          <div class="svc-card-footer">
+            <a href="climatizacao.html" class="svc-card-link">
+              Ver detalhes
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://wa.me/556133263118?text=Ola!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Climatiza%C3%A7%C3%A3o." class="svc-card-wa" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              Pedir orçamento
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10 · Funilaria e Pintura -->
+      <div class="svc-card">
+        <div class="svc-card-accent"></div>
+        <div class="svc-card-body">
+          <div class="svc-card-num">10 · Funilaria e Pintura</div>
+          <div class="svc-card-title">Funilaria e Pintura</div>
+          <p class="svc-card-desc">Reparos de lataria e pintura automotiva com câmara de secagem. Acabamento de alto padrão que devolve o visual original.</p>
+          <ul class="svc-card-list">
+            <li>Reparo de amassados e lataria</li>
+            <li>Pintura completa ou parcial com câmara</li>
+            <li>Funilaria sem pintura (PDR)</li>
+            <li>Troca e reparo de para-choques</li>
+            <li>Polimento e correção de pintura</li>
+          </ul>
+          <div class="svc-card-footer">
+            <a href="funilaria-e-pintura.html" class="svc-card-link">
+              Ver detalhes
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://wa.me/556133263118?text=Ola!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Funilaria%20e%20Pintura." class="svc-card-wa" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              Pedir orçamento
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11 · Óleos e Fluidos -->
+      <div class="svc-card">
+        <div class="svc-card-accent"></div>
+        <div class="svc-card-body">
+          <div class="svc-card-num">11 · Óleos e Fluidos</div>
+          <div class="svc-card-title">Troca de Óleos e Fluidos</div>
+          <p class="svc-card-desc">Óleo de motor, câmbio, diferencial, fluido de freio e arrefecimento. Produtos premium para prolongar a vida do seu veículo.</p>
+          <ul class="svc-card-list">
+            <li>Troca de óleo e filtro do motor</li>
+            <li>Troca de óleo de câmbio e diferencial</li>
+            <li>Troca de fluido de freio (DOT 4/5)</li>
+            <li>Troca e flush do líquido de arrefecimento</li>
+            <li>Troca de fluido de direção hidráulica</li>
+          </ul>
+          <div class="svc-card-footer">
+            <a href="oleos-e-fluidos.html" class="svc-card-link">
+              Ver detalhes
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://wa.me/556133263118?text=Ola!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Troca%20de%20%C3%93leos%20e%20Fluidos." class="svc-card-wa" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              Pedir orçamento
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12 · Alinhamento e Balanceamento -->
+      <div class="svc-card">
+        <div class="svc-card-accent"></div>
+        <div class="svc-card-body">
+          <div class="svc-card-num">12 · Alinhamento e Balanceamento</div>
+          <div class="svc-card-title">Alinhamento e Balanceamento</div>
+          <p class="svc-card-desc">Equipamentos computadorizados de última geração. Seu carro reto, seus pneus preservados e mais conforto em cada quilômetro.</p>
+          <ul class="svc-card-list">
+            <li>Alinhamento computadorizado 3D</li>
+            <li>Balanceamento eletrônico de rodas</li>
+            <li>Verificação de convergência e cambagem</li>
+            <li>Rodízio de pneus</li>
+            <li>Diagnóstico de desgaste irregular de pneu</li>
+          </ul>
+          <div class="svc-card-footer">
+            <a href="alinhamento-e-balanceamento.html" class="svc-card-link">
+              Ver detalhes
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://wa.me/556133263118?text=Ola!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Alinhamento%20e%20Balanceamento." class="svc-card-wa" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              Pedir orçamento
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<section class="section-cta">
+  <div class="cta-inner">
+    <div>
+      <span class="cta-tag">Pronto para agendar?</span>
+      <h2 class="cta-title">Seu carro nas<br>mãos de quem<br>faz o certo.</h2>
+      <p class="cta-desc">Venha conhecer a diferença de uma oficina que trata o seu carro como se fosse nosso. Diagnóstico gratuito, sem compromisso.</p>
+
+      <div class="cta-contact">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <span>SCLRN 703 Bloco C Loja 02, <strong>Asa Norte, Brasília/DF</strong></span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6.29 6.29l.95-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <span><strong>(61) 3326-3118</strong> · WhatsApp disponível</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <span>Segunda a Sexta: <strong>8h–18h</strong> · Sábado: <strong>8h–13h</strong></span>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;">
+        <a href="https://wa.me/556133263118" class="btn btn-whatsapp" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Falar no WhatsApp
+        </a>
+        <a href="index.html" class="btn btn-outline-white">← Voltar ao início</a>
+      </div>
+    </div>
+
+    <div class="cta-wa-card">
+      <div style="width:64px;height:64px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      </div>
+      <div class="cta-wa-title">Fale conosco agora</div>
+      <p class="cta-wa-sub">Orçamento rápido e sem compromisso. Respondemos em até 2 horas no horário comercial.</p>
+      <a href="https://wa.me/556133263118?text=Ola!%20Gostaria%20de%20fazer%20um%20orcamento." class="btn btn-whatsapp" target="_blank" style="width:100%;justify-content:center;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Iniciar conversa no WhatsApp
+      </a>
+      <div style="font-size:12px;color:#aaa;">(61) 3326-3118 · (61) 3326-4522</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <img src="imagens/logo-minasescapamentos-footer.png" alt="Minas Escapamentos" class="footer-logo">
+        <p class="footer-brand-desc">Centro automotivo completo na Asa Norte, em Brasília. Desde de 1997 conservando tradição, honestidade e excelência no cuidado do seu veículo.</p>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Serviços</div>
+        <ul class="footer-links">
+          <li><a href="mecanica-geral.html">Mecânica Geral</a></li>
+          <li><a href="motor.html">Motor</a></li>
+          <li><a href="cambios.html">Câmbio Manual e Automático</a></li>
+          <li><a href="eletrica-e-eletronica.html">Elétrica e Eletrônica</a></li>
+          <li><a href="suspensao.html">Suspensão e Direção</a></li>
+          <li><a href="freios.html">Freios e Injeção</a></li>
+          <li><a href="climatizacao.html">Climatização</a></li>
+          <li><a href="alinhamento-e-balanceamento.html">Alinhamento e Balanceamento</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Empresa</div>
+        <ul class="footer-links">
+          <li><a href="index.html#sobre">Nossa história</a></li>
+          <li><a href="index.html#processo">Processo Transparente</a></li>
+          <li><a href="index.html#depoimentos">Depoimentos</a></li>
+          <li><a href="index.html#dicas">Dicas e artigos</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Contato</div>
+        <ul class="footer-links">
+          <li><span>SCLRN 703 Bloco C Loja 02</span></li>
+          <li><span>Asa Norte, Brasília/DF</span></li>
+          <li><a href="tel:6133263118">(61) 3326-3118</a></li>
+          <li><a href="tel:6133264522">(61) 3326-4522</a></li>
+          <li><span>Seg–Sex: 8h às 18h</span></li>
+          <li><span>Sáb: 8h às 13h</span></li>
+        </ul>
+
+        <div class="social-links" style="margin-top:24px;">
+          <a href="https://www.instagram.com/minasescapamentos/" target="_blank" class="social-link" title="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://wa.me/556133263118" target="_blank" class="social-link" title="WhatsApp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">2026 Minas Escapamentos. Todos os direitos reservados.</p>
+      <div style="display:flex;gap:20px;">
+        <a href="#" style="font-size:12px;color:rgba(255,255,255,0.25);text-decoration:none;">Política de privacidade</a>
+        <a href="#" style="font-size:12px;color:rgba(255,255,255,0.25);text-decoration:none;">Termos de uso</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-brand-big">MINAS ESCAPAMENTOS</div>
+</footer>
+
+<!-- ─── WHATSAPP FLOAT ─── -->
+<a href="https://wa.me/556133263118" class="whatsapp-float" target="_blank" title="Falar no WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+
+<!-- ─── MOBILE BOTTOM BAR ─── -->
+<div class="mobile-bottom-bar">
+  <a href="tel:6133263118" class="mobile-bottom-phone">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6.29 6.29l.95-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    (61) 3326-3118
+  </a>
+  <a href="https://wa.me/556133263118?text=Ol%C3%A1!%20Vim%20do%20site%20da%20Minas%20e%20gostaria%20de%20fazer%20um%20orcamento." class="mobile-bottom-wa" target="_blank">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    WhatsApp
+  </a>
+</div>
+
+<!-- ─── BACK TO TOP ─── -->
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+(function() {
+  var hamburger = document.getElementById('navHamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  var backToTop  = document.getElementById('backToTop');
+
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+    var closeBtn = document.getElementById('mobileMenuClose');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function() {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    }
+  }
+
+  if (backToTop) {
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 300) backToTop.classList.add('visible');
+      else backToTop.classList.remove('visible');
+    });
+    backToTop.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1950 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minas Escapamentos — Mecânica Completa e de Confiança</title>
+  <link rel="icon" type="image/png" href="imagens/favicon-minasescapamentos.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,700;0,800;0,900;1,800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bordo: #7B1818;
+      --bordo-dark: #5C1010;
+      --preto: #1A1A1A;
+      --vermelho: #E81C2E;
+      --creme: #F9F5F0;
+      --cinza: #E0D9D0;
+      --cinza-medio: #9B9390;
+      --branco: #FFFFFF;
+      --font-display: 'Barlow', sans-serif;
+      --font-body: 'Space Grotesk', sans-serif;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--preto);
+      background: var(--branco);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav-logo img { height: 52px; width: auto; object-fit: contain; }
+
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: #555;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--bordo); }
+    .nav-links a.active { color: var(--bordo); }
+
+    /* ─── NAV DROPDOWN ─── */
+    .nav-item-dropdown { position: relative; }
+
+    .nav-dropdown-trigger {
+      display: flex; align-items: center; gap: 5px; cursor: pointer;
+    }
+
+    .nav-dropdown-arrow {
+      transition: transform 0.2s;
+      flex-shrink: 0;
+      color: #999;
+    }
+
+    .nav-item-dropdown:hover .nav-dropdown-arrow,
+    .nav-item-dropdown:focus-within .nav-dropdown-arrow {
+      transform: rotate(180deg);
+      color: var(--bordo);
+    }
+
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 16px);
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      background: var(--branco);
+      border-radius: 14px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.14), 0 2px 8px rgba(0,0,0,0.06);
+      border: 1px solid var(--cinza);
+      min-width: 400px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+      z-index: 200;
+      overflow: hidden;
+    }
+
+    .nav-item-dropdown:hover .nav-dropdown,
+    .nav-item-dropdown:focus-within .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-dropdown-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      padding: 8px;
+    }
+
+    .nav-dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #444;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+
+    .nav-dropdown-item:hover {
+      background: var(--creme);
+      color: var(--bordo);
+    }
+
+    .nav-dropdown-num {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--vermelho);
+      letter-spacing: 1px;
+      flex-shrink: 0;
+      width: 18px;
+    }
+
+    .nav-dropdown-footer {
+      border-top: 1px solid var(--cinza);
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .nav-dropdown-footer a {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--bordo);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      transition: opacity 0.2s;
+    }
+
+    .nav-dropdown-footer a:hover { opacity: 0.7; }
+
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+
+    .nav-phone { font-size: 13px; color: var(--cinza-medio); font-weight: 500; }
+    .nav-phone strong { color: var(--preto); }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      letter-spacing: 0.2px;
+    }
+
+    .btn-red { background: var(--vermelho); color: white; }
+    .btn-red:hover { background: #C5001F; transform: translateY(-1px); }
+
+    .btn-bordo { background: var(--bordo); color: white; }
+    .btn-bordo:hover { background: var(--bordo-dark); transform: translateY(-1px); }
+
+    .btn-outline { background: transparent; color: var(--bordo); border: 2px solid var(--bordo); }
+    .btn-outline:hover { background: var(--bordo); color: white; }
+
+    .btn-outline-white { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.4); }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: white; }
+
+    .btn-whatsapp { background: #25D366; color: white; font-size: 15px; padding: 14px 28px; }
+    .btn-whatsapp:hover { background: #1fba57; transform: translateY(-1px); }
+
+    /* ─── HERO ─── */
+    .hero-wrap {
+      position: relative;
+      overflow: hidden;
+      min-height: calc(100vh - 72px);
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -32px;
+      background: url('imagens/bg-hero-site-miasescapamentos.webp') center/cover no-repeat;
+      filter: blur(10px);
+      transform: scale(1.05);
+      z-index: 0;
+    }
+
+    .hero-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, rgba(8,4,4,0.82) 0%, rgba(18,8,8,0.72) 60%, rgba(8,4,4,0.55) 100%);
+      z-index: 1;
+    }
+
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 48px;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 64px;
+      align-items: center;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.85);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--vermelho);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 88px;
+      line-height: 1.0;
+      color: var(--branco);
+      margin-bottom: 20px;
+      letter-spacing: -2px;
+    }
+
+    .hero-headline em { font-style: italic; color: var(--vermelho); font-weight: 800; }
+
+    .hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.72);
+      max-width: 500px;
+      margin-bottom: 36px;
+      line-height: 1.75;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 36px;
+      margin-bottom: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .hero-stat-num {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 40px;
+      color: var(--branco);
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+
+    .hero-stat-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    .hero-actions { display: flex; gap: 14px; align-items: center; }
+
+
+
+    /* ─── WHATSAPP CARD ─── */
+    .wa-card {
+      background: var(--branco);
+      border-radius: 16px;
+      padding: 40px 36px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.35), 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    .wa-card-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 34px;
+      letter-spacing: -1px;
+      color: var(--preto);
+      margin-bottom: 6px;
+      line-height: 1.05;
+    }
+
+    .wa-card-sub {
+      font-size: 14px;
+      color: var(--cinza-medio);
+      margin-bottom: 32px;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    .wa-card-divider {
+      height: 1px;
+      background: var(--cinza);
+      margin: 28px 0;
+    }
+
+    .wa-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .wa-detail-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--creme);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--bordo);
+    }
+
+    .wa-detail-text { font-size: 13px; color: #666; line-height: 1.5; }
+    .wa-detail-text strong { color: var(--preto); display: block; font-size: 14px; margin-bottom: 1px; }
+
+    /* ─── BRANDS STRIP ─── */
+    .brands-strip {
+      background: var(--preto);
+      padding: 32px 48px;
+    }
+
+    .brands-strip-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .brands-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .brands-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .brand-tag {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px;
+      transition: all 0.2s;
+      cursor: default;
+    }
+
+    .brand-tag:hover {
+      color: white;
+      border-color: var(--vermelho);
+      background: rgba(232,28,46,0.06);
+    }
+
+    /* ─── GOOGLE REVIEWS ─── */
+    .section-greviews {
+      background: var(--creme);
+      padding: 72px 48px;
+    }
+
+    .greviews-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .greviews-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 40px;
+    }
+
+    .greviews-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .g-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .g-logo-icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    .g-logo-text {
+      font-size: 14px;
+      font-weight: 600;
+      color: #555;
+    }
+
+    .g-stars { color: #F5A623; font-size: 22px; letter-spacing: 3px; }
+
+    .greview-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+    .greview-card {
+      background: var(--branco);
+      border-radius: 12px;
+      padding: 24px 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+
+    .greview-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .greview-author { display: flex; align-items: center; gap: 12px; }
+
+    .greview-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--bordo);
+      color: white;
+      font-weight: 700;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .greview-name { font-weight: 600; font-size: 14px; color: var(--preto); }
+    .greview-date { font-size: 12px; color: var(--cinza-medio); margin-top: 2px; }
+
+    .greview-g-icon { opacity: 0.5; }
+
+    .greview-stars { color: #F5A623; font-size: 13px; letter-spacing: 1px; margin-bottom: 10px; }
+
+    .greview-text { font-size: 14px; color: #555; line-height: 1.7; }
+
+    /* ─── SECTION BASE ─── */
+    .section { padding: 100px 48px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--vermelho);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 58px;
+      color: var(--preto);
+      margin-bottom: 16px;
+      line-height: 1.02;
+      letter-spacing: -1.5px;
+    }
+
+    .section-title em { font-style: italic; color: var(--vermelho); font-weight: 800; }
+
+    .section-desc {
+      font-size: 16px;
+      color: #666;
+      max-width: 580px;
+      line-height: 1.75;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 56px;
+    }
+
+    /* ─── SERVICES ─── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+
+    .service-card {
+      border: 1.5px solid var(--cinza);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+      background: var(--branco);
+    }
+
+    .service-card:hover {
+      border-color: var(--bordo);
+      box-shadow: 0 12px 36px rgba(123,24,24,0.12);
+      transform: translateY(-3px);
+    }
+
+    .service-card-body { padding: 24px 28px 28px; }
+
+    .service-card-num {
+      font-family: var(--font-display);
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: var(--vermelho);
+      margin-bottom: 10px;
+    }
+
+    .service-card-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 22px;
+      color: var(--preto);
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+
+    .service-card-desc {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.65;
+    }
+
+    /* ─── TRUST / DARK ─── */
+    .section-trust {
+      background: var(--preto);
+      padding: 100px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-trust::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--bordo), var(--vermelho));
+    }
+
+    .trust-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 480px;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .trust-left .section-tag { color: var(--vermelho); }
+    .trust-left .section-title { color: var(--branco); font-size: 54px; letter-spacing: -1.5px; }
+
+    .trust-desc {
+      color: rgba(255,255,255,0.55);
+      font-size: 15px;
+      line-height: 1.8;
+      max-width: 460px;
+      margin-bottom: 48px;
+    }
+
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 56px;
+      color: var(--vermelho);
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 6px;
+      font-weight: 500;
+    }
+
+    .trust-image { border-radius: 14px; overflow: hidden; position: relative; }
+
+    .trust-image img {
+      width: 100%; height: 520px; object-fit: cover; display: block;
+      filter: brightness(0.9);
+    }
+
+    .trust-badge {
+      position: absolute;
+      bottom: 24px; left: 24px;
+      background: var(--vermelho);
+      color: white;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .trust-badge span {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 28px;
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+
+    /* ─── PROCESS ─── */
+    .section-process { background: var(--creme); }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      margin-top: 60px;
+    }
+
+    .process-img-wrap {
+      margin-top: 64px;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .process-img-wrap img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .process-img-wrap::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 160px;
+      background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .process-img-caption {
+      position: absolute;
+      bottom: 28px;
+      left: 32px;
+      color: rgba(255,255,255,0.85);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    .process-step { padding: 32px 24px; position: relative; }
+
+    .process-step::after {
+      content: '→';
+      position: absolute;
+      top: 36px; right: -8px;
+      font-size: 20px;
+      color: var(--cinza);
+    }
+
+    .process-step:last-child::after { display: none; }
+
+    .process-num {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 56px;
+      color: var(--cinza);
+      line-height: 1;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .process-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 20px;
+      color: var(--preto);
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
+
+    .process-desc { font-size: 13px; color: #777; line-height: 1.65; }
+
+    /* ─── TESTIMONIALS ─── */
+
+    /* ─── ABOUT / VALUES ─── */
+    .section-about { background: var(--branco); }
+
+    .about-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 480px 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-image { position: relative; border-radius: 14px; overflow: hidden; }
+    .about-image img { width: 100%; height: 580px; object-fit: cover; display: block; }
+
+    .about-image-badge {
+      position: absolute;
+      bottom: 28px; right: 28px;
+      background: var(--branco);
+      border-radius: 12px;
+      padding: 20px 24px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+
+    .about-badge-num {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 48px;
+      color: var(--bordo);
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+
+    .about-badge-text {
+      font-size: 11px;
+      color: var(--cinza-medio);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    .values-list { display: flex; flex-direction: column; gap: 22px; margin-top: 40px; }
+
+    .value-item { display: flex; gap: 16px; align-items: flex-start; }
+
+    .value-accent {
+      width: 3px;
+      height: 48px;
+      background: var(--bordo);
+      border-radius: 2px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .value-title { font-weight: 700; font-size: 15px; color: var(--preto); margin-bottom: 4px; }
+    .value-desc { font-size: 13px; color: #777; line-height: 1.6; }
+
+    /* ─── CTA SECTION ─── */
+    .section-cta {
+      background: var(--bordo);
+      padding: 100px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-cta::after {
+      content: 'MINAS';
+      position: absolute;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 260px;
+      color: rgba(255,255,255,0.04);
+      bottom: -40px; right: -20px;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -4px;
+    }
+
+    .cta-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: block;
+    }
+
+    .cta-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 68px;
+      color: var(--branco);
+      line-height: 1.02;
+      margin-bottom: 20px;
+      letter-spacing: -2px;
+    }
+
+    .cta-desc {
+      color: rgba(255,255,255,0.65);
+      font-size: 16px;
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+
+    .cta-contact { display: flex; flex-direction: column; gap: 14px; }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(255,255,255,0.8);
+      font-size: 15px;
+    }
+
+    .contact-icon {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-item strong { color: var(--branco); }
+
+    .cta-wa-card {
+      background: var(--branco);
+      border-radius: 16px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+    }
+
+    .cta-wa-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 28px;
+      letter-spacing: -0.5px;
+      color: var(--preto);
+    }
+
+    .cta-wa-sub { font-size: 13px; color: var(--cinza-medio); line-height: 1.5; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--preto);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 60px 48px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 260px 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .footer-brand-desc { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.75; margin-top: 20px; }
+
+    .footer-col-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.25);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 18px;
+    }
+
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+
+    .footer-links a, .footer-links span {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover, .footer-links span:hover { color: var(--branco); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 0 32px;
+    }
+
+    .footer-copyright { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+    .footer-brand-big {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 120px;
+      color: rgba(255,255,255,0.025);
+      position: absolute;
+      bottom: 32px;
+      left: 0; right: 0;
+      text-align: center;
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+
+    .social-links { display: flex; gap: 10px; }
+
+    .social-link {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      font-size: 15px;
+      transition: all 0.2s;
+    }
+
+    .social-link:hover { border-color: var(--vermelho); color: var(--vermelho); background: rgba(232,28,46,0.08); }
+
+    /* ─── WHATSAPP FLOAT ─── */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 200;
+      background: #25D366;
+      color: white;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
+
+    /* ─── TABLET (≤ 1024px) ─── */
+    @media (max-width: 1024px) {
+      nav { padding: 0 24px; }
+      .nav-phone { display: none; }
+      .nav-links { gap: 20px; }
+
+      .hero { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
+      .hero-headline { font-size: 64px; }
+      #orcamento { max-width: 480px; }
+
+      .greviews-inner { grid-template-columns: 1fr; gap: 32px; }
+      .greviews-score { position: static; }
+
+      .trust-inner { grid-template-columns: 1fr; gap: 48px; }
+      .trust-image img { height: 360px; }
+
+      .process-grid { grid-template-columns: repeat(3, 1fr); }
+      .process-step:nth-child(3)::after { display: none; }
+
+      .about-inner { grid-template-columns: 1fr; gap: 48px; }
+      .about-image img { height: 400px; }
+
+      .cta-inner { grid-template-columns: 1fr; gap: 40px; }
+
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+
+      .section { padding: 72px 24px; }
+      .section-trust { padding: 72px 24px; }
+      .section-cta { padding: 72px 24px; }
+      .section-greviews { padding: 56px 24px; }
+
+      .brands-strip { padding: 32px 24px; }
+      footer { padding: 48px 24px 0; }
+
+      .section-title { font-size: 44px; }
+      .trust-left .section-title { font-size: 44px; }
+      .cta-title { font-size: 52px; }
+    }
+
+    /* ─── MOBILE (≤ 768px) ─── */
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; height: 60px; }
+      .nav-links { display: none; }
+      .nav-logo img { height: 40px; }
+
+      .hero { grid-template-columns: 1fr; padding: 48px 16px; gap: 32px; }
+      .hero-headline { font-size: 48px; letter-spacing: -1px; }
+      .hero-stats { gap: 20px; }
+      .hero-stat-num { font-size: 30px; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+      #orcamento { max-width: 100%; }
+
+      .section { padding: 56px 16px; }
+      .section-trust { padding: 56px 16px; }
+      .section-cta { padding: 56px 16px; }
+      .section-greviews { padding: 48px 16px; }
+
+      .brands-strip { padding: 24px 16px; }
+      footer { padding: 40px 16px 0; }
+
+      .section-title { font-size: 36px; letter-spacing: -1px; }
+      .trust-left .section-title { font-size: 36px; }
+      .cta-title { font-size: 40px; letter-spacing: -1px; }
+      .section-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+
+      .greviews-header { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .greviews-badge { align-items: flex-start; }
+      .greview-cards { grid-template-columns: 1fr; }
+
+      .trust-inner { grid-template-columns: 1fr; gap: 40px; }
+      .trust-image img { height: 280px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .process-step::after { display: none; }
+
+      .about-inner { grid-template-columns: 1fr; gap: 32px; }
+      .about-image img { height: 300px; }
+
+      .cta-inner { grid-template-columns: 1fr; gap: 32px; }
+      .cta-wa-card { display: none; }
+      .section-cta::after { font-size: 140px; }
+
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    /* ─── SMALL MOBILE (≤ 480px) ─── */
+    @media (max-width: 480px) {
+      .hero-headline { font-size: 38px; }
+      .hero-stat-num { font-size: 26px; }
+      .process-grid { grid-template-columns: 1fr; }
+      .wa-card { padding: 28px 20px; }
+      .wa-card-title { font-size: 26px; }
+      .cta-title { font-size: 32px; }
+      .section-title { font-size: 30px; letter-spacing: -0.5px; }
+    }
+
+    .footer-logo { height: 44px; width: auto; }
+    @media (min-width: 1025px) {
+      .footer-logo { width: 155px; height: auto; }
+    }
+  
+    /* ─── MOBILE NAV HAMBURGER ─── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px; height: 40px;
+      background: none; border: none;
+      cursor: pointer; padding: 4px;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .nav-hamburger:hover { background: rgba(0,0,0,0.05); }
+    .nav-hamburger span {
+      display: block; height: 2px; width: 22px;
+      background: var(--preto); border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ─── MOBILE MENU OVERLAY ─── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 200;
+      background: var(--branco);
+      overflow-y: auto;
+      padding: 72px 24px 120px;
+      flex-direction: column;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu-close {
+      position: absolute;
+      top: 14px; right: 14px;
+      width: 40px; height: 40px;
+      background: none; border: none;
+      cursor: pointer; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--preto);
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .mobile-menu-close:hover { background: rgba(0,0,0,0.06); }
+    .mobile-menu-links { list-style: none; display: flex; flex-direction: column; }
+    .mobile-menu-links > li { border-bottom: 1px solid var(--cinza); }
+    .mobile-menu-links > li > a {
+      display: block; padding: 16px 0;
+      font-size: 18px; font-weight: 600;
+      color: var(--preto); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .mobile-menu-links > li > a:hover { color: var(--bordo); }
+    .mobile-submenu {
+      list-style: none; padding: 0 0 12px 0;
+      display: flex; flex-direction: column; gap: 2px;
+    }
+    .mobile-submenu a {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 8px;
+      font-size: 14px; font-weight: 500;
+      color: #666; text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .mobile-submenu a:hover { background: var(--creme); color: var(--bordo); }
+    .mobile-submenu .nav-dropdown-num {
+      font-size: 10px; font-weight: 700;
+      color: var(--vermelho); letter-spacing: 1px;
+      width: 18px; flex-shrink: 0; font-family: var(--font-display);
+    }
+
+    /* ─── MOBILE BOTTOM BAR ─── */
+    .mobile-bottom-bar {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 150;
+      background: var(--preto);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      height: 64px;
+      align-items: stretch;
+    }
+    .mobile-bottom-phone {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      text-decoration: none; color: var(--branco);
+      font-size: 13px; font-weight: 600;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      transition: background 0.2s;
+    }
+    .mobile-bottom-phone:hover { background: rgba(255,255,255,0.06); }
+    .mobile-bottom-wa {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      text-decoration: none; background: #25D366; color: white;
+      font-size: 13px; font-weight: 600;
+      transition: background 0.2s;
+    }
+    .mobile-bottom-wa:hover { background: #1fba57; }
+
+    /* ─── BACK TO TOP ─── */
+    .back-to-top {
+      position: fixed;
+      right: 16px; bottom: 80px;
+      z-index: 140;
+      width: 36px; height: 36px;
+      background: rgba(26,26,26,0.65);
+      color: white; border: none; border-radius: 8px;
+      align-items: center; justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      opacity: 0; display: none;
+      transition: opacity 0.25s;
+    }
+    .back-to-top.visible { opacity: 1; }
+
+    /* ─── MOBILE OVERRIDES (≤ 768px) ─── */
+    @media (max-width: 768px) {
+      nav { position: static; z-index: auto; }
+      .nav-hamburger { display: flex; }
+      .nav-right { display: none; }
+      .whatsapp-float { display: none !important; }
+      .mobile-bottom-bar { display: flex; }
+      .back-to-top { display: flex; }
+      body { padding-bottom: 64px; }
+    }  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-logo">
+    <a href="index.html"><img src="imagens/logo-minasescapamentos-navbar.png" alt="Minas Escapamentos"></a>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li class="nav-item-dropdown">
+      <a href="servicos.html" class="nav-dropdown-trigger">
+        Serviços
+        <svg class="nav-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-grid">
+          <a href="mecanica-geral.html" class="nav-dropdown-item"><span class="nav-dropdown-num">01</span>Mecânica Geral</a>
+          <a href="motor.html" class="nav-dropdown-item"><span class="nav-dropdown-num">02</span>Motor</a>
+          <a href="cambios.html" class="nav-dropdown-item"><span class="nav-dropdown-num">03</span>Câmbios</a>
+          <a href="eletrica-e-eletronica.html" class="nav-dropdown-item"><span class="nav-dropdown-num">04</span>Elétrica e Eletrônica</a>
+          <a href="injecao-eletronica.html" class="nav-dropdown-item"><span class="nav-dropdown-num">05</span>Injeção Eletrônica</a>
+          <a href="suspensao.html" class="nav-dropdown-item"><span class="nav-dropdown-num">06</span>Suspensão</a>
+          <a href="direcao.html" class="nav-dropdown-item"><span class="nav-dropdown-num">07</span>Direção</a>
+          <a href="freios.html" class="nav-dropdown-item"><span class="nav-dropdown-num">08</span>Freios</a>
+          <a href="climatizacao.html" class="nav-dropdown-item"><span class="nav-dropdown-num">09</span>Climatização</a>
+          <a href="funilaria-e-pintura.html" class="nav-dropdown-item"><span class="nav-dropdown-num">10</span>Funilaria e Pintura</a>
+          <a href="oleos-e-fluidos.html" class="nav-dropdown-item"><span class="nav-dropdown-num">11</span>Óleos e Fluidos</a>
+          <a href="alinhamento-e-balanceamento.html" class="nav-dropdown-item"><span class="nav-dropdown-num">12</span>Alinhamento e Balanceamento</a>
+        </div>
+        <div class="nav-dropdown-footer">
+          <a href="servicos.html">Ver todos os serviços →</a>
+        </div>
+      </div>
+    </li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#processo">Processo</a></li>
+    <li><a href="#depoimentos">Depoimentos</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <span class="nav-phone"><strong>(61) 3326-3118</strong></span>
+    <a href="https://wa.me/556133263118?text=Olá!%20Vim%20do%20site%20da%20Minas%20e%20gostaria%20de%20fazer%20um%20orcamento." class="btn btn-red" target="_blank">WhatsApp</a>
+  </div>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- ─── MOBILE MENU ─── -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Fechar menu">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <ul class="mobile-menu-links">
+    <li><a href="index.html">Início</a></li>
+    <li>
+      <a href="servicos.html">Serviços</a>
+      <ul class="mobile-submenu">
+        <li><a href="mecanica-geral.html"><span class="nav-dropdown-num">01</span>Mecânica Geral</a></li>
+        <li><a href="motor.html"><span class="nav-dropdown-num">02</span>Motor</a></li>
+        <li><a href="cambios.html"><span class="nav-dropdown-num">03</span>Câmbios</a></li>
+        <li><a href="eletrica-e-eletronica.html"><span class="nav-dropdown-num">04</span>Elétrica e Eletrônica</a></li>
+        <li><a href="injecao-eletronica.html"><span class="nav-dropdown-num">05</span>Injeção Eletrônica</a></li>
+        <li><a href="suspensao.html"><span class="nav-dropdown-num">06</span>Suspensão</a></li>
+        <li><a href="direcao.html"><span class="nav-dropdown-num">07</span>Direção</a></li>
+        <li><a href="freios.html"><span class="nav-dropdown-num">08</span>Freios</a></li>
+        <li><a href="climatizacao.html"><span class="nav-dropdown-num">09</span>Climatização</a></li>
+        <li><a href="funilaria-e-pintura.html"><span class="nav-dropdown-num">10</span>Funilaria e Pintura</a></li>
+        <li><a href="oleos-e-fluidos.html"><span class="nav-dropdown-num">11</span>Óleos e Fluidos</a></li>
+        <li><a href="alinhamento-e-balanceamento.html"><span class="nav-dropdown-num">12</span>Alinhamento e Balanceamento</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#sobre">Sobre</a></li>
+    <li><a href="index.html#processo">Processo</a></li>
+    <li><a href="index.html#depoimentos">Depoimentos</a></li>
+  </ul>
+</div>
+
+<!-- ─── HERO ─── -->
+<div class="hero-wrap">
+  <div class="hero">
+    <div>
+      <div class="hero-badge">Centro automotivo · Asa Norte, Brasília · Desde 1997</div>
+      <h1 class="hero-headline">Mecânica<br>completa e<br><em>de confiança.</em></h1>
+      <p class="hero-desc">28 anos cuidando dos melhores veículos de Brasília.<br>Diagnóstico honesto, orçamento transparente e serviço de excelência — <strong>para quem não tolera surpresas.</strong></p>
+
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">28</div>
+          <div class="hero-stat-label">Anos de tradição</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">+30 MIL</div>
+          <div class="hero-stat-label">Clientes atendidos</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">+120 MIL</div>
+          <div class="hero-stat-label">Serviços prestados</div>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="servicos.html" class="btn btn-bordo">Ver serviços</a>
+        <a href="#sobre" class="btn btn-outline" style="color:white;border-color:white;">Nossa história</a>
+      </div>
+
+    </div>
+
+    <div id="orcamento">
+      <div class="wa-card">
+        <div class="wa-card-title">Faça seu orçamento</div>
+        <p class="wa-card-sub">Fale com a gente agora pelo WhatsApp. Atendimento imediato no horário comercial.</p>
+
+        <a href="https://wa.me/556133263118?text=Olá!%20Vim%20do%20site%20da%20Minas%20e%20gostaria%20de%20fazer%20um%20orcamento." class="btn btn-whatsapp" target="_blank" style="width:100%;justify-content:center;font-size:16px;padding:16px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Iniciar conversa
+        </a>
+
+        <div class="wa-card-divider"></div>
+
+        <div class="wa-detail">
+          <div class="wa-detail-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="wa-detail-text">
+            <strong>Onde estamos</strong>
+            SCLRN 703 Bloco C Loja 02, Asa Norte, Brasília/DF
+          </div>
+        </div>
+
+        <div class="wa-detail">
+          <div class="wa-detail-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="wa-detail-text">
+            <strong>Horário de atendimento</strong>
+            Seg–Sex: 8h às 18h · Sábado: 8h às 13h
+          </div>
+        </div>
+
+        <div class="wa-detail" style="margin-bottom:0;">
+          <div class="wa-detail-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6.29 6.29l.95-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="wa-detail-text">
+            <strong>Telefone</strong>
+            (61) 3326-3118 · (61) 3326-4522
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── BRANDS STRIP ─── -->
+<div class="brands-strip">
+  <div class="brands-strip-inner">
+    <span class="brands-label">Atendemos todas as principais marcas do Brasil</span>
+    <div class="brands-grid">
+      <span class="brand-tag">Volkswagen</span>
+      <span class="brand-tag">Chevrolet</span>
+      <span class="brand-tag">Fiat</span>
+      <span class="brand-tag">Toyota</span>
+      <span class="brand-tag">Hyundai</span>
+      <span class="brand-tag">Jeep</span>
+      <span class="brand-tag">Honda</span>
+      <span class="brand-tag">Renault</span>
+      <span class="brand-tag">Nissan</span>
+      <span class="brand-tag">Ford</span>
+      <span class="brand-tag">Mitsubishi</span>
+      <span class="brand-tag">BMW</span>
+      <span class="brand-tag">Mercedes-Benz</span>
+      <span class="brand-tag">Peugeot</span>
+      <span class="brand-tag">Citroën</span>
+      <span class="brand-tag">Land Rover</span>
+      <span class="brand-tag">Kia</span>
+      <span class="brand-tag">Audi</span>
+      <span class="brand-tag">BYD</span>
+      <span class="brand-tag">RAM</span>
+      <span class="brand-tag">JAC</span>
+      <span class="brand-tag">Subaru</span>
+      <span class="brand-tag">Volvo</span>
+      <span class="brand-tag">Suzuki</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── GOOGLE REVIEWS ─── -->
+<section class="section-greviews" id="depoimentos">
+  <div class="greviews-inner">
+    <div class="greviews-header">
+      <div>
+        <span class="section-tag">O que dizem nossos clientes</span>
+        <h2 class="section-title">Quem confia na<br>Minas volta sempre</h2>
+      </div>
+      <div class="greviews-badge">
+        <div class="g-logo">
+          <svg class="g-logo-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+            <path fill="none" d="M0 0h48v48H0z"/>
+          </svg>
+          <span class="g-logo-text">Google Reviews</span>
+        </div>
+        <div class="g-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      </div>
+    </div>
+
+    <div class="greview-cards">
+      <div class="greview-card">
+        <div class="greview-header">
+          <div class="greview-author">
+            <div class="greview-avatar">CE</div>
+            <div>
+              <div class="greview-name">Marcela Tomaz</div>
+              <div class="greview-date">Maio de 2026</div>
+            </div>
+          </div>
+          <svg class="greview-g-icon" width="20" height="20" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+        </div>
+        <div class="greview-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="greview-text">Essa é a oficina do meu carro há anos e eu sempre vim porque era a oficina do carro do meu pai. Atendimento excelente e atencioso. O serviço sempre resolveu os problemas que precisei resolver sem a enrolação de ter que trazer o carro várias vezes para rever e com preços honestos. Confio e indico 100%.</p>
+      </div>
+
+      <div class="greview-card">
+        <div class="greview-header">
+          <div class="greview-author">
+            <div class="greview-avatar" style="background:#1A5276;">PA</div>
+            <div>
+              <div class="greview-name">Delcides Kurscheidt</div>
+              <div class="greview-date">Abril de 2026</div>
+            </div>
+          </div>
+          <svg class="greview-g-icon" width="20" height="20" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+        </div>
+        <div class="greview-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="greview-text">O trabalho da Minas Escapamentos continua impecável, honesto e muito competente. Agradeço ao consultor Bismarque pelo excelente acompanhamento do meu veículo, pela simpatia e respostas rápidas.</p>
+      </div>
+
+      <div class="greview-card">
+        <div class="greview-header">
+          <div class="greview-author">
+            <div class="greview-avatar" style="background:#1E8449;">RM</div>
+            <div>
+              <div class="greview-name">Sérgio Malta</div>
+              <div class="greview-date">Março de 2026</div>
+            </div>
+          </div>
+          <svg class="greview-g-icon" width="20" height="20" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+        </div>
+        <div class="greview-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="greview-text">Serviço de excelência, com profissionais qualificados e experientes. Bem estabelecida no mercado. Simpatia, cordialidade e ainda me entregam o carro limpo. Sala de espera climatizada, com cafeteira que mói o café na hora, água gelada, biscoitos, televisão e jornal. Recomendo demais!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ─── -->
+<section class="section" id="servicos">
+  <div class="section-inner">
+    <div class="section-header">
+      <div>
+        <span class="section-tag">Nossos serviços</span>
+        <h2 class="section-title">Tudo de que seu veículo<br>precisa, em um só lugar</h2>
+        <p class="section-desc">Da revisão simples ao diagnóstico completo — nossa equipe especializada cuida de cada detalhe com a seriedade que o seu carro merece.</p>
+      </div>
+      <a href="https://wa.me/556133263118?text=Olá!%20Vim%20do%20site%20da%20Minas%20e%20gostaria%20de%20fazer%20um%20orcamento." class="btn btn-bordo" style="white-space:nowrap;flex-shrink:0;" target="_blank">Solicitar orçamento</a>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-card-body">
+          <div class="service-card-num">01</div>
+          <div class="service-card-title">Mecânica Geral</div>
+          <p class="service-card-desc">Manutenção preventiva e corretiva completa. Revisamos tudo e fazemos o diagnóstico honesto do que seu carro realmente precisa.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-body">
+          <div class="service-card-num">02</div>
+          <div class="service-card-title">Motor</div>
+          <p class="service-card-desc">Retífica, troca de componentes internos e overhaul completo. Do simples ao complexo, com garantia em todo serviço realizado.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-body">
+          <div class="service-card-num">03</div>
+          <div class="service-card-title">Câmbio Manual e Automático</div>
+          <p class="service-card-desc">Revisão, reparo e substituição de câmbios manuais e automáticos. Peças de qualidade e mão de obra especializada.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-body">
+          <div class="service-card-num">04</div>
+          <div class="service-card-title">Elétrica e Eletrônica</div>
+          <p class="service-card-desc">Diagnóstico completo do sistema elétrico e scanner automotivo. Alternador, bateria, módulos, centrais eletrônicas e fiação — tudo em um só lugar.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-body">
+          <div class="service-card-num">05</div>
+          <div class="service-card-title">Injeção</div>
+          <p class="service-card-desc">Limpeza, regulagem e reparo do sistema de injeção eletrônica. Motor econômico, potente e sem falhas de funcionamento.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-body">
+          <div class="service-card-num">06</div>
+          <div class="service-card-title">Suspensão</div>
+          <p class="service-card-desc">Revisão completa de amortecedores, molas, bieletas e geometria. Conforto, estabilidade e segurança em cada curva.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-body">
+          <div class="service-card-num">07</div>
+          <div class="service-card-title">Direção</div>
+          <p class="service-card-desc">Direção hidráulica, elétrica e mecânica. Reparo e substituição com precisão para um volante firme e responsivo.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-body">
+          <div class="service-card-num">08</div>
+          <div class="service-card-title">Freios</div>
+          <p class="service-card-desc">Sistema de frenagem revisado item a item: pastilhas, discos, tambores, fluido e ABS. Segurança sem concessões.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-body">
+          <div class="service-card-num">09</div>
+          <div class="service-card-title">Climatização</div>
+          <p class="service-card-desc">Ar-condicionado com carga de gás, higienização e reparo do compressor. Conforto em qualquer temperatura.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-body">
+          <div class="service-card-num">10</div>
+          <div class="service-card-title">Funilaria e Pintura</div>
+          <p class="service-card-desc">Reparos de lataria e pintura automotiva com câmara de secagem. Acabamento de alto padrão que devolve o visual original.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-body">
+          <div class="service-card-num">11</div>
+          <div class="service-card-title">Troca de Óleos e Fluidos</div>
+          <p class="service-card-desc">Óleo de motor, câmbio, diferencial, fluido de freio e arrefecimento. Produtos premium para prolongar a vida do seu veículo.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-body">
+          <div class="service-card-num">12</div>
+          <div class="service-card-title">Alinhamento e Balanceamento</div>
+          <p class="service-card-desc">Equipamentos computadorizados de última geração. Seu carro reto, seus pneus preservados e mais conforto em cada quilômetro.</p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRUST / DARK ─── -->
+<section class="section-trust" id="sobre">
+  <div class="trust-inner">
+    <div class="trust-left">
+      <span class="section-tag">Nossa história</span>
+      <h2 class="section-title">28 anos de<br><em>excelência</em><br>em Brasília</h2>
+      <p class="trust-desc">Em 1997, abrimos nossas portas na Asa Norte com uma única promessa: cuidar do seu carro com a mesma honestidade que cuidaríamos do nosso próprio. Hoje, após 28 anos de muito trabalho e com uma carteira de clientes que passa de geração em geração, essa promessa continua de pé.</p>
+
+      <div class="stats-grid">
+        <div>
+          <div class="stat-num">28</div>
+          <div class="stat-label">Anos de tradição</div>
+        </div>
+        <div>
+          <div class="stat-num">+30 mil</div>
+          <div class="stat-label">Clientes atendidos</div>
+        </div>
+        <div>
+          <div class="stat-num">+120 mil</div>
+          <div class="stat-label">Serviços executados</div>
+        </div>
+        <div>
+          <div class="stat-num">4,9</div>
+          <div class="stat-label">Estrelas Google</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="trust-image">
+      <img
+        src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&w=800&q=80"
+        alt="Equipe Minas Escapamentos"
+        onerror="this.style.background='#2a2a2a';this.style.height='520px';this.src='data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='">
+      <div class="trust-badge">
+        <span>1997</span>
+        Fundada em Brasília
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROCESS ─── -->
+<section class="section section-process" id="processo">
+  <div class="section-inner">
+    <div class="section-header">
+      <div>
+        <span class="section-tag">Como trabalhamos</span>
+        <h2 class="section-title">O Processo<br>Transparente da Minas</h2>
+        <p class="section-desc">Nenhuma surpresa. Nenhum serviço sem a sua aprovação. Você sabe exatamente o que está acontecendo com seu carro em cada etapa.</p>
+      </div>
+    </div>
+
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="process-num">01</div>
+        <div class="process-title">Diagnóstico honesto</div>
+        <p class="process-desc">Avaliação completa do veículo. Identificamos o que precisa de atenção — e só isso. Sem inventar defeitos, sem empurrar serviços.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">02</div>
+        <div class="process-title">Orçamento detalhado</div>
+        <p class="process-desc">Você recebe um orçamento claro, item por item. Sabe exatamente o que vai pagar antes de qualquer serviço começar.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">03</div>
+        <div class="process-title">Sua aprovação</div>
+        <p class="process-desc">Nenhum parafuso é mexido sem o seu OK. Você decide o que quer fazer e quando quer fazer. O controle é seu.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">04</div>
+        <div class="process-title">Comunicação constante</div>
+        <p class="process-desc">Qualquer imprevisto durante o serviço, você é avisado em tempo real. Nada é decidido sem você saber.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">05</div>
+        <div class="process-title">Entrega com garantia</div>
+        <p class="process-desc">Carro devolvido no prazo, com explicação completa do que foi feito e apresentação das peças substituídas. É garantia em todo serviço realizado.</p>
+      </div>
+    </div>
+
+    <div class="process-img-wrap">
+      <img
+        src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&w=1400&q=80"
+        alt="Carro na máquina de diagnóstico — Minas Escapamentos"
+        onerror="this.style.background='linear-gradient(135deg,#1a1a1a,#2a2a2a)';this.style.height='420px';this.src='data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='">
+      <span class="process-img-caption">Diagnóstico eletrônico de precisão</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT / VALUES ─── -->
+<section class="section section-about">
+  <div class="about-inner">
+    <div class="about-image">
+      <img
+        src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&w=800&q=80"
+        alt="Mecanico Minas Escapamentos"
+        onerror="this.style.background='linear-gradient(135deg,#2a2a2a,#1a1a1a)';this.style.height='580px';this.src='data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='">
+      <div class="about-image-badge">
+        <div class="about-badge-num">1997</div>
+        <div class="about-badge-text">Fundados em Brasília</div>
+      </div>
+    </div>
+
+    <div>
+      <span class="section-tag">Nossos valores</span>
+      <h2 class="section-title">Por que somos a<br>oficina favorita<br>de Brasília?</h2>
+      <p class="section-desc" style="margin-bottom:0;">Não é a idade que define uma oficina. É o caráter. Em 28 anos, nunca abrimos mão de fazer o certo pelo cliente.</p>
+
+      <div class="values-list">
+        <div class="value-item">
+          <div class="value-accent"></div>
+          <div>
+            <div class="value-title">Honestidade Inegociável</div>
+            <p class="value-desc">Dizemos o que o carro precisa — e só isso. Nenhum serviço começa sem sua aprovação explícita.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="value-accent"></div>
+          <div>
+            <div class="value-title">Excelência Sem Atalho</div>
+            <p class="value-desc">Fazemos bem feito da primeira vez. Não existe "bom o suficiente" quando está em jogo a segurança do seu carro.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="value-accent"></div>
+          <div>
+            <div class="value-title">Transparência Total</div>
+            <p class="value-desc">Você sabe o que está acontecendo com o carro em tempo real. Nada é decidido sem você saber.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="value-accent"></div>
+          <div>
+            <div class="value-title">Respeito ao Seu Tempo</div>
+            <p class="value-desc">Sala de espera premium, atendimento personalizado e pontualidade na entrega. Seu tempo é tão valioso quanto o nosso.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<section class="section-cta" id="contato">
+  <div class="cta-inner">
+    <div>
+      <span class="cta-tag">Pronto para agendar?</span>
+      <h2 class="cta-title">Seu carro nas<br>mãos de quem<br>faz o certo.</h2>
+      <p class="cta-desc">Venha conhecer a diferença de uma oficina que trata o seu carro como se fosse nosso. Diagnóstico gratuito, sem compromisso.</p>
+
+      <div class="cta-contact">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <span>SCLRN 703 Bloco C Loja 02, <strong>Asa Norte, Brasília/DF</strong></span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6.29 6.29l.95-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <span><strong>(61) 3326-3118</strong> · WhatsApp disponível</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <span>Segunda a Sexta: <strong>8h–18h</strong> · Sábado: <strong>8h–13h</strong></span>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;">
+        <a href="https://wa.me/556133263118?text=Olá!%20Vim%20do%20site%20da%20Minas%20e%20gostaria%20de%20fazer%20um%20orcamento." class="btn btn-whatsapp" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Falar no WhatsApp
+        </a>
+        <a href="https://share.google/TWuO3Q0Pf0nq4JPUA" class="btn btn-outline-white" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Ver no mapa
+        </a>
+      </div>
+    </div>
+
+    <div class="cta-wa-card">
+      <div style="width:64px;height:64px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      </div>
+      <div class="cta-wa-title">Fale conosco agora</div>
+      <p class="cta-wa-sub">Orçamento rápido e sem compromisso. Respondemos em até 5 minutos no horário comercial.</p>
+      <a href="https://wa.me/556133263118?text=Olá!%20Vim%20do%20site%20da%20Minas%20e%20gostaria%20de%20fazer%20um%20orcamento." class="btn btn-whatsapp" target="_blank" style="width:100%;justify-content:center;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Solicitar orçamento
+      </a>
+      <div style="font-size:12px;color:#aaa;">(61) 3326-3118 · (61) 3326-4522</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <img src="imagens/logo-minasescapamentos-footer.png" alt="Minas Escapamentos" class="footer-logo">
+        <p class="footer-brand-desc">Centro automotivo completo na Asa Norte, em Brasília. Desde de 1997 conservando tradição, honestidade e excelência no cuidado do seu veículo.</p>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Serviços</div>
+        <ul class="footer-links">
+          <li><a href="mecanica-geral.html">Mecânica Geral</a></li>
+          <li><a href="motor.html">Motor</a></li>
+          <li><a href="cambios.html">Câmbio Manual e Automático</a></li>
+          <li><a href="eletrica-e-eletronica.html">Elétrica e Eletrônica</a></li>
+          <li><a href="suspensao.html">Suspensão e Direção</a></li>
+          <li><a href="freios.html">Freios e Injeção</a></li>
+          <li><a href="climatizacao.html">Climatização</a></li>
+          <li><a href="alinhamento-e-balanceamento.html">Alinhamento e Balanceamento</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Empresa</div>
+        <ul class="footer-links">
+          <li><a href="#sobre">Nossa história</a></li>
+          <li><a href="#processo">Processo Transparente</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Contato</div>
+        <ul class="footer-links">
+          <li><span>SCLRN 703 Bloco C Loja 02</span></li>
+          <li><span>Asa Norte, Brasília/DF</span></li>
+          <li><a href="tel:6133263118">(61) 3326-3118</a></li>
+          <li><a href="tel:6133264522">(61) 3326-4522</a></li>
+          <li><span>Seg–Sex: 8h às 18h</span></li>
+          <li><span>Sáb: 8h às 13h</span></li>
+        </ul>
+
+        <div class="social-links" style="margin-top:24px;">
+          <a href="https://www.instagram.com/minasescapamentos/" target="_blank" class="social-link" title="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://wa.me/556133263118?text=Olá!%20Vim%20do%20site%20da%20Minas%20e%20gostaria%20de%20fazer%20um%20orcamento." target="_blank" class="social-link" title="WhatsApp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">2026 Minas Escapamentos. Todos os direitos reservados.</p>
+      <div style="display:flex;gap:20px;">
+        <a href="#" style="font-size:12px;color:rgba(255,255,255,0.25);text-decoration:none;">Política de privacidade</a>
+        <a href="#" style="font-size:12px;color:rgba(255,255,255,0.25);text-decoration:none;">Termos de uso</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-brand-big">MINAS ESCAPAMENTOS</div>
+</footer>
+
+<!-- ─── WHATSAPP FLOAT ─── -->
+<a href="https://wa.me/556133263118?text=Olá!%20Vim%20do%20site%20da%20Minas%20e%20gostaria%20de%20fazer%20um%20orcamento." class="whatsapp-float" target="_blank" title="Falar no WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+
+<!-- ─── MOBILE BOTTOM BAR ─── -->
+<div class="mobile-bottom-bar">
+  <a href="tel:6133263118" class="mobile-bottom-phone">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6.29 6.29l.95-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    (61) 3326-3118
+  </a>
+  <a href="https://wa.me/556133263118?text=Ol%C3%A1!%20Vim%20do%20site%20da%20Minas%20e%20gostaria%20de%20fazer%20um%20orcamento." class="mobile-bottom-wa" target="_blank">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    WhatsApp
+  </a>
+</div>
+
+<!-- ─── BACK TO TOP ─── -->
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+(function() {
+  var hamburger = document.getElementById('navHamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  var backToTop  = document.getElementById('backToTop');
+
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+    var closeBtn = document.getElementById('mobileMenuClose');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function() {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    }
+  }
+
+  if (backToTop) {
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 300) backToTop.classList.add('visible');
+      else backToTop.classList.remove('visible');
+    });
+    backToTop.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+})();
+</script>
+</body>
+</html>
