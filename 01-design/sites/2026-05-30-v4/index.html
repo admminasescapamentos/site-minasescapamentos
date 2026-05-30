@@ -11,169 +11,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,700;0,800;0,900;1,800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <style>
-    nav { border-bottom: 1px solid rgba(255,255,255,0.15); }
-    .section { padding: 100px 48px; }
-    .hero-wrap { position: relative; overflow: hidden; min-height: calc(100vh - 72px); display: flex; align-items: center; }
-    .hero-wrap::before { content: ''; position: absolute; inset: -32px; background: url('imagens/bg-hero-site-miasescapamentos.webp') center/cover no-repeat; filter: blur(10px); transform: scale(1.05); z-index: 0; }
-    .hero-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(110deg, rgba(8,4,4,0.82) 0%, rgba(18,8,8,0.72) 60%, rgba(8,4,4,0.55) 100%); z-index: 1; }
-    .hero { max-width: 1200px; margin: 0 auto; padding: 80px 48px; display: grid; grid-template-columns: 1fr 400px; gap: 64px; align-items: center; width: 100%; position: relative; z-index: 2; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.2); padding: 6px 14px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px; backdrop-filter: blur(4px); }
-    .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--vermelho); border-radius: 50%; flex-shrink: 0; }
-    .hero-headline { font-family: var(--font-display); font-weight: 800; font-size: 88px; line-height: 1.0; color: var(--branco); margin-bottom: 20px; letter-spacing: -2px; }
-    .hero-headline em { font-style: italic; color: var(--vermelho); font-weight: 800; }
-    .hero-desc { font-size: 16px; color: rgba(255,255,255,0.72); max-width: 500px; margin-bottom: 36px; line-height: 1.75; }
-    .hero-stats { display: flex; gap: 36px; margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,0.15); }
-    .hero-stat-num { font-family: var(--font-display); font-weight: 800; font-size: 40px; color: var(--branco); line-height: 1; letter-spacing: -1px; }
-    .hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.7px; margin-top: 4px; font-weight: 500; }
-    .hero-actions { display: flex; gap: 14px; align-items: center; }
-    .wa-card { background: var(--branco); border-radius: 16px; padding: 40px 36px; box-shadow: 0 32px 80px rgba(0,0,0,0.35), 0 4px 20px rgba(0,0,0,0.2); }
-    .wa-card-title { font-family: var(--font-display); font-weight: 800; font-size: 34px; letter-spacing: -1px; color: var(--preto); margin-bottom: 6px; line-height: 1.05; }
-    .wa-card-sub { font-size: 14px; color: var(--cinza-medio); margin-bottom: 32px; font-weight: 400; line-height: 1.6; }
-    .wa-card-divider { height: 1px; background: var(--cinza); margin: 28px 0; }
-    .wa-detail { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
-    .wa-detail-icon { width: 36px; height: 36px; background: var(--creme); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--bordo); }
-    .wa-detail-text { font-size: 13px; color: #666; line-height: 1.5; }
-    .wa-detail-text strong { color: var(--preto); display: block; font-size: 14px; margin-bottom: 1px; }
-    .brands-strip { background: var(--preto); padding: 32px 48px; }
-    .brands-strip-inner { max-width: 1200px; margin: 0 auto; }
-    .brands-label { font-size: 11px; color: rgba(255,255,255,0.3); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; display: block; }
-    .brands-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-    .brand-tag { font-family: var(--font-body); font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 1.2px; text-transform: uppercase; padding: 6px 14px; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; transition: all 0.2s; cursor: default; }
-    .brand-tag:hover { color: white; border-color: var(--vermelho); background: rgba(232,28,46,0.06); }
-    .section-greviews { background: var(--creme); padding: 72px 48px; }
-    .greviews-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 48px; }
-    .greviews-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; }
-    .greviews-badge { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
-    .g-logo { display: flex; align-items: center; gap: 8px; }
-    .g-logo-icon { width: 32px; height: 32px; }
-    .g-logo-text { font-size: 14px; font-weight: 600; color: #555; }
-    .greview-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .greview-card { background: var(--branco); border-radius: 12px; padding: 24px 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
-    .greview-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
-    .greview-author { display: flex; align-items: center; gap: 12px; }
-    .greview-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--bordo); color: white; font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .greview-name { font-weight: 600; font-size: 14px; color: var(--preto); }
-    .greview-date { font-size: 12px; color: var(--cinza-medio); margin-top: 2px; }
-    .greview-g-icon { opacity: 0.5; }
-    .greview-stars { color: #F5A623; font-size: 13px; letter-spacing: 1px; margin-bottom: 10px; }
-    .greview-text { font-size: 14px; color: #555; line-height: 1.7; }
-    .section-tag { margin-bottom: 12px; letter-spacing: 2px; }
-    .section-title { font-size: 58px; line-height: 1.02; }
-    .section-title em { color: var(--vermelho); font-weight: 800; }
-    .section-desc { font-size: 16px; max-width: 580px; }
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
-    .service-card { border: 1.5px solid var(--cinza); border-radius: 14px; overflow: hidden; transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s; background: var(--branco); }
-    .service-card:hover { border-color: var(--bordo); box-shadow: 0 12px 36px rgba(123,24,24,0.12); transform: translateY(-3px); }
-    .service-card-body { padding: 24px 28px 28px; }
-    .service-card-num { font-family: var(--font-display); font-size: 13px; letter-spacing: 2px; color: var(--vermelho); margin-bottom: 10px; }
-    .service-card-title { font-family: var(--font-display); font-weight: 800; font-size: 22px; color: var(--preto); margin-bottom: 8px; letter-spacing: -0.5px; line-height: 1.1; }
-    .service-card-desc { font-size: 13px; color: #666; line-height: 1.65; }
-    .section-trust { background: var(--preto); padding: 100px 48px; position: relative; overflow: hidden; }
-    .section-trust::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--bordo), var(--vermelho)); }
-    .trust-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 480px; gap: 80px; align-items: center; }
-    .trust-left .section-tag { color: var(--vermelho); }
-    .trust-left .section-title { color: var(--branco); font-size: 54px; letter-spacing: -1.5px; }
-    .trust-desc { color: rgba(255,255,255,0.55); font-size: 15px; line-height: 1.8; max-width: 460px; margin-bottom: 48px; }
-    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-    .stat-num { font-family: var(--font-display); font-weight: 900; font-size: 56px; color: var(--vermelho); line-height: 1; letter-spacing: -1px; }
-    .stat-label { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; font-weight: 500; }
-    .trust-image { border-radius: 14px; overflow: hidden; position: relative; }
-    .trust-image img { width: 100%; height: 520px; object-fit: cover; display: block; filter: brightness(0.9); }
-    .trust-badge { position: absolute; bottom: 24px; left: 24px; background: var(--vermelho); color: white; padding: 14px 22px; border-radius: 10px; font-weight: 700; font-size: 13px; }
-    .trust-badge span { display: block; font-family: var(--font-display); font-weight: 800; font-size: 28px; letter-spacing: -0.5px; line-height: 1; }
-    .section-process { background: var(--creme); }
-    .process-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-top: 60px; }
-    .process-img-wrap { margin-top: 64px; border-radius: 16px; overflow: hidden; position: relative; }
-    .process-img-wrap img { width: 100%; height: 420px; object-fit: cover; display: block; }
-    .process-img-wrap::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 160px; background: linear-gradient(to top, rgba(0,0,0,0.6), transparent); z-index: 1; pointer-events: none; }
-    .process-img-caption { position: absolute; bottom: 28px; left: 32px; color: rgba(255,255,255,0.85); font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; z-index: 2; }
-    .process-step { padding: 32px 24px; position: relative; }
-    .process-step::after { content: '\2192'; position: absolute; top: 36px; right: -8px; font-size: 20px; color: var(--cinza); }
-    .process-step:last-child::after { display: none; }
-    .process-num { font-family: var(--font-display); font-weight: 900; font-size: 56px; color: var(--cinza); line-height: 1; margin-bottom: 16px; letter-spacing: -1px; }
-    .process-title { font-family: var(--font-display); font-weight: 800; font-size: 20px; color: var(--preto); margin-bottom: 8px; letter-spacing: -0.3px; }
-    .process-desc { font-size: 13px; color: #777; line-height: 1.65; }
-    .section-about { background: var(--branco); }
-    .about-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 480px 1fr; gap: 80px; align-items: center; }
-    .about-image { position: relative; border-radius: 14px; overflow: hidden; }
-    .about-image img { width: 100%; height: 580px; object-fit: cover; display: block; }
-    .about-image-badge { position: absolute; bottom: 28px; right: 28px; background: var(--branco); border-radius: 12px; padding: 20px 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.15); text-align: center; }
-    .about-badge-num { font-family: var(--font-display); font-weight: 800; font-size: 48px; color: var(--bordo); line-height: 1; letter-spacing: -1px; }
-    .about-badge-text { font-size: 11px; color: var(--cinza-medio); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; font-weight: 500; }
-    .values-list { display: flex; flex-direction: column; gap: 22px; margin-top: 40px; }
-    .value-item { display: flex; gap: 16px; align-items: flex-start; }
-    .value-accent { width: 3px; height: 48px; background: var(--bordo); border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
-    .value-title { font-weight: 700; font-size: 15px; color: var(--preto); margin-bottom: 4px; }
-    .value-desc { font-size: 13px; color: #777; line-height: 1.6; }
-    .section-cta { padding: 100px 48px; }
-    .cta-title { font-size: 68px; }
-    @media (max-width: 1024px) {
-      nav { padding: 0 24px; }
-      .nav-phone { display: none; }
-      .nav-links { gap: 20px; }
-      .hero { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
-      .hero-headline { font-size: 64px; }
-      #orcamento { max-width: 480px; }
-      .trust-inner { grid-template-columns: 1fr; gap: 48px; }
-      .trust-image img { height: 360px; }
-      .process-grid { grid-template-columns: repeat(3, 1fr); }
-      .process-step:nth-child(3)::after { display: none; }
-      .about-inner { grid-template-columns: 1fr; gap: 48px; }
-      .about-image img { height: 400px; }
-      .section { padding: 72px 24px; }
-      .section-trust { padding: 72px 24px; }
-      .section-cta { padding: 72px 24px; }
-      .section-greviews { padding: 56px 24px; }
-      .brands-strip { padding: 32px 24px; }
-      footer { padding: 48px 24px 0; }
-      .section-title { font-size: 44px; }
-      .trust-left .section-title { font-size: 44px; }
-      .cta-title { font-size: 52px; }
-    }
-    @media (max-width: 768px) {
-      nav { padding: 0 16px; height: 60px; }
-      .nav-logo img { height: 40px; }
-      .hero { grid-template-columns: 1fr; padding: 48px 16px; gap: 32px; }
-      .hero-headline { font-size: 48px; letter-spacing: -1px; }
-      .hero-stats { gap: 20px; }
-      .hero-stat-num { font-size: 30px; }
-      .hero-actions { flex-direction: column; }
-      .hero-actions .btn { width: 100%; justify-content: center; }
-      #orcamento { max-width: 100%; }
-      .section { padding: 56px 16px; }
-      .section-trust { padding: 56px 16px; }
-      .section-cta { padding: 56px 16px; }
-      .section-greviews { padding: 48px 16px; }
-      .brands-strip { padding: 24px 16px; }
-      footer { padding: 40px 16px 0; }
-      .section-title { font-size: 36px; letter-spacing: -1px; }
-      .trust-left .section-title { font-size: 36px; }
-      .cta-title { font-size: 40px; letter-spacing: -1px; }
-      .section-header { flex-direction: column; align-items: flex-start; gap: 20px; }
-      .greviews-header { flex-direction: column; align-items: flex-start; gap: 24px; }
-      .greviews-badge { align-items: flex-start; }
-      .greview-cards { grid-template-columns: 1fr; }
-      .trust-inner { grid-template-columns: 1fr; gap: 40px; }
-      .trust-image img { height: 280px; }
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-      .process-grid { grid-template-columns: 1fr 1fr; }
-      .process-step::after { display: none; }
-      .about-inner { grid-template-columns: 1fr; gap: 32px; }
-      .about-image img { height: 300px; }
-      .section-cta::after { font-size: 140px; }
-      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
-    }
-    @media (max-width: 480px) {
-      .hero-headline { font-size: 38px; }
-      .hero-stat-num { font-size: 26px; }
-      .process-grid { grid-template-columns: 1fr; }
-      .wa-card { padding: 28px 20px; }
-      .wa-card-title { font-size: 26px; }
-      .cta-title { font-size: 32px; }
-      .section-title { font-size: 30px; letter-spacing: -0.5px; }
-    }
-  </style>
 
 <script type="application/ld+json">
 {
@@ -217,7 +54,7 @@
 }
 </script>
 </head>
-<body>
+<body class="page-home">
 
 <!-- ─── NAV ─── -->
 <nav>
@@ -323,7 +160,7 @@
 
       <div class="hero-actions">
         <a href="servicos.html" class="btn btn-bordo">Ver serviços</a>
-        <a href="#sobre" class="btn btn-outline" style="color:white;border-color:white;">Nossa história</a>
+        <a href="#sobre" class="btn btn-outline-white">Nossa história</a>
       </div>
 
     </div>
@@ -333,7 +170,7 @@
         <div class="wa-card-title">Faça seu orçamento</div>
         <p class="wa-card-sub">Fale com a gente agora pelo WhatsApp. Atendimento imediato no horário comercial.</p>
 
-        <a href="https://wa.me/556133263118?text=Olá!%20Vim%20do%20site%20da%20Minas%20e%20gostaria%20de%20fazer%20um%20orcamento." class="btn btn-whatsapp" target="_blank" style="width:100%;justify-content:center;font-size:16px;padding:16px;">
+        <a href="https://wa.me/556133263118?text=Olá!%20Vim%20do%20site%20da%20Minas%20e%20gostaria%20de%20fazer%20um%20orcamento." class="btn btn-whatsapp" target="_blank">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
           Iniciar conversa
         </a>
@@ -360,7 +197,7 @@
           </div>
         </div>
 
-        <div class="wa-detail" style="margin-bottom:0;">
+        <div class="wa-detail">
           <div class="wa-detail-icon">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6.29 6.29l.95-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           </div>
@@ -487,7 +324,7 @@
         <h2 class="section-title">Tudo de que seu veículo<br>precisa, em um só lugar</h2>
         <p class="section-desc">Da revisão simples ao diagnóstico completo — nossa equipe especializada cuida de cada detalhe com a seriedade que o seu carro merece.</p>
       </div>
-      <a href="https://wa.me/556133263118?text=Olá!%20Vim%20do%20site%20da%20Minas%20e%20gostaria%20de%20fazer%20um%20orcamento." class="btn btn-bordo" style="white-space:nowrap;flex-shrink:0;" target="_blank">Solicitar orçamento</a>
+      <a href="https://wa.me/556133263118?text=Olá!%20Vim%20do%20site%20da%20Minas%20e%20gostaria%20de%20fazer%20um%20orcamento." class="btn btn-bordo btn-nowrap" target="_blank">Solicitar orçamento</a>
     </div>
 
     <div class="services-grid">
@@ -698,7 +535,7 @@
     <div>
       <span class="section-tag">Nossos valores</span>
       <h2 class="section-title">Por que somos a<br>oficina favorita<br>de Brasília?</h2>
-      <p class="section-desc" style="margin-bottom:0;">Não é a idade que define uma oficina. É o caráter. Em 28 anos, nunca abrimos mão de fazer o certo pelo cliente.</p>
+      <p class="section-desc">Não é a idade que define uma oficina. É o caráter. Em 28 anos, nunca abrimos mão de fazer o certo pelo cliente.</p>
 
       <div class="values-list">
         <div class="value-item">
@@ -763,7 +600,7 @@
         </div>
       </div>
 
-      <div style="display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;">
+      <div class="cta-actions">
         <a href="https://wa.me/556133263118?text=Olá!%20Vim%20do%20site%20da%20Minas%20e%20gostaria%20de%20fazer%20um%20orcamento." class="btn btn-whatsapp" target="_blank">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
           Falar no WhatsApp
@@ -776,16 +613,16 @@
     </div>
 
     <div class="cta-wa-card">
-      <div style="width:64px;height:64px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+      <div class="cta-wa-icon">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
       </div>
       <div class="cta-wa-title">Fale conosco agora</div>
       <p class="cta-wa-sub">Orçamento rápido e sem compromisso. Respondemos em até 5 minutos no horário comercial.</p>
-      <a href="https://wa.me/556133263118?text=Olá!%20Vim%20do%20site%20da%20Minas%20e%20gostaria%20de%20fazer%20um%20orcamento." class="btn btn-whatsapp" target="_blank" style="width:100%;justify-content:center;">
+      <a href="https://wa.me/556133263118?text=Olá!%20Vim%20do%20site%20da%20Minas%20e%20gostaria%20de%20fazer%20um%20orcamento." class="btn btn-whatsapp" target="_blank">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
         Solicitar orçamento
       </a>
-      <div style="font-size:12px;color:#aaa;">(61) 3326-3118 · (61) 3326-4522</div>
+      <div class="cta-wa-phones">(61) 3326-3118 · (61) 3326-4522</div>
     </div>
   </div>
 </section>
@@ -834,7 +671,7 @@
           <li><span>Sáb: 8h às 13h</span></li>
         </ul>
 
-        <div class="social-links" style="margin-top:24px;">
+        <div class="social-links">
           <a href="https://www.instagram.com/minasescapamentos/" target="_blank" class="social-link" title="Instagram">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           </a>
@@ -847,9 +684,9 @@
 
     <div class="footer-bottom">
       <p class="footer-copyright">2026 Minas Escapamentos. Todos os direitos reservados.</p>
-      <div style="display:flex;gap:20px;">
-        <a href="#" style="font-size:12px;color:rgba(255,255,255,0.25);text-decoration:none;">Política de privacidade</a>
-        <a href="#" style="font-size:12px;color:rgba(255,255,255,0.25);text-decoration:none;">Termos de uso</a>
+      <div class="footer-links-row">
+        <a href="#" class="footer-link-small">Política de privacidade</a>
+        <a href="#" class="footer-link-small">Termos de uso</a>
       </div>
     </div>
   </div>
