@@ -1,0 +1,16 @@
+DirectoryIndex index.html
+RewriteEngine On
+
+# 1) /index.html -> / (permanente)
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html[\ ?] [NC]
+RewriteRule ^index\.html$ / [R=301,L]
+
+# 2) qualquer outra-pagina.html -> /outra-pagina (permanente, preserva o rankeamento)
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^.\ ]+)\.html[\ ?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# 3) serve o arquivo .html internamente para a URL limpa (sem mudar o que aparece na barra de endereço)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.+)$ $1.html [L]
